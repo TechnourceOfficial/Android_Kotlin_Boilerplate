@@ -17,4 +17,6 @@
     <string name="description_text_1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eleifend tincidunt rhoncus.</string>
     <string name="description_text_2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eleifend tincidunt rhoncus.</string>
     <string name="description_text_3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eleifend tincidunt rhoncus.</string>
+    <string name="login_button_text">Connexion</string>
+    <string name="sign_up_button_text">S\'inscrire</string>
 </resources>

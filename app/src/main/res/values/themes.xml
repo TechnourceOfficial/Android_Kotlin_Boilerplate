@@ -40,6 +40,15 @@
         <item name="fontFamily">@font/montserrat_medium</item>
     </style>
 
+    <!--     Blue Button Style -->
+    <style name="blueBtnStyle" parent="Platform.MaterialComponents">
+        <item name="android:textSize">@dimen/sp_14</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="textAllCaps">false</item>
+        <item name="fontFamily">@font/montserrat_medium</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
     <style name="white14Medium">
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">@dimen/sp_14</item>
