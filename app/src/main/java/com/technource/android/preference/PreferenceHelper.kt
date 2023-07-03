@@ -1,4 +1,10 @@
 package com.technource.android.preference
 
 
-interface PreferenceHelper {}
+interface PreferenceHelper {
+    fun setLanguage(language: String)
+    fun getLanguage(): String
+
+    fun setLanguageCode(languageCode: String)
+    fun getLanguageCode(): String
+}

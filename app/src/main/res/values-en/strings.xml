@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Android Kotlin Boilerplate</string>
     <string name="select_language_hint">Select Language</string>
@@ -9,10 +10,4 @@
     <string name="russian_code">ru</string>
     <string name="please_select_language">Please select language</string>
     <string name="intro_next">Next</string>
-
-    <string-array name="language">
-        <item>English</item>
-        <item>French</item>
-        <item>Russian</item>
-    </string-array>
 </resources>

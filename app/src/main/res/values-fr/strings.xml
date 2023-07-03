@@ -1,18 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Android Kotlin Boilerplate</string>
-    <string name="select_language_hint">Select Language</string>
+    <string name="select_language_hint">Choisir la langue</string>
     <string name="english">English</string>
     <string name="french">French</string>
     <string name="russian">Russian</string>
     <string name="english_code">en</string>
     <string name="french_code">fr</string>
     <string name="russian_code">ru</string>
-    <string name="please_select_language">Please select language</string>
-    <string name="intro_next">Next</string>
-
-    <string-array name="language">
-        <item>English</item>
-        <item>French</item>
-        <item>Russian</item>
-    </string-array>
+    <string name="please_select_language">Veuillez sélectionner la languee</string>
+    <string name="intro_next">Suivant</string>
 </resources>
