@@ -6,4 +6,77 @@
     android:layout_height="match_parent"
     tools:context="com.technource.android.ui.selectLanguageModule.SelectLanguageActivity">
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/backgroundImg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_welcome_bg" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/dp_20"
+        android:paddingVertical="@dimen/dp_25"
+        app:layout_constraintBottom_toBottomOf="@+id/backgroundImg">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/selectLangTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_20"
+            android:text="@string/select_language_hint"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_14" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_55"
+            android:background="@drawable/spinner_background"
+            android:orientation="horizontal">
+
+            <AutoCompleteTextView
+                android:id="@+id/languages"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:focusable="false"
+                android:hint="@string/select_language_hint"
+                android:inputType="none"
+                android:paddingStart="@dimen/dp_20"
+                android:textColor="@color/white"
+                android:textColorHint="@color/kcCaptionLightGray"
+                android:textSize="@dimen/sp_14" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/dp_25"
+                android:layout_height="@dimen/dp_30"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:src="@drawable/down_arrow" />
+        </RelativeLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/nextBtn"
+            style="@style/yellowBtnStyle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_70"
+            android:layout_marginTop="@dimen/dp_25"
+            android:layout_marginBottom="@dimen/dp_20"
+            android:text="@string/intro_next" />
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/img_bottom_logo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

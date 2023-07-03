@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Android Boilerplate</string>
+    <string name="select_language_hint">Выберите язык</string>
+    <string name="english">English</string>
+    <string name="french">French</string>
+    <string name="russian">Russian</string>
+    <string name="english_code">en</string>
+    <string name="french_code">fr</string>
+    <string name="russian_code">ru</string>
+    <string name="please_select_language">Выберите язык</string>
+    <string name="intro_next">Следующий</string>
+</resources>
