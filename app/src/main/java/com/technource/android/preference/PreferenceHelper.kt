@@ -7,4 +7,7 @@ interface PreferenceHelper {
 
     fun setLanguageCode(languageCode: String)
     fun getLanguageCode(): String
+
+    fun setIsIntroScreenDone(isIntroScreenDone: Boolean)
+    fun isIntroScreenDone(): Boolean
 }

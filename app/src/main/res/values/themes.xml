@@ -26,6 +26,20 @@
         <item name="android:textColor">@color/kcPrimaryColor</item>
     </style>
 
+    <!--    Intro Title Style-->
+    <style name="introTitleText">
+        <item name="android:textSize">@dimen/sp_28</item>
+        <item name="android:textColor">@color/kcYellow</item>
+        <item name="fontFamily">@font/montserrat_medium</item>
+    </style>
+
+    <!--    Intro Description Style-->
+    <style name="descTitleText">
+        <item name="android:textSize">@dimen/sp_16</item>
+        <item name="android:textColor">@color/kcCaptionLightGray</item>
+        <item name="fontFamily">@font/montserrat_medium</item>
+    </style>
+
     <style name="white14Medium">
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">@dimen/sp_14</item>

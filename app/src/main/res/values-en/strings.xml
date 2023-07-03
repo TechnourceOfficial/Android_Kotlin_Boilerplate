@@ -10,4 +10,11 @@
     <string name="russian_code">ru</string>
     <string name="please_select_language">Please select language</string>
     <string name="intro_next">Next</string>
+    <string name="intro_skip">Skip</string>
+    <string name="title_text_1">Title 1</string>
+    <string name="title_text_2">Title 2</string>
+    <string name="title_text_3">Title 3</string>
+    <string name="description_text_1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eleifend tincidunt rhoncus.</string>
+    <string name="description_text_2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eleifend tincidunt rhoncus.</string>
+    <string name="description_text_3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eleifend tincidunt rhoncus.</string>
 </resources>
