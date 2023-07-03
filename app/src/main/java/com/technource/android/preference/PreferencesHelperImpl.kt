@@ -12,6 +12,7 @@ class PreferencesHelperImpl constructor(context: Context) : PreferenceHelper {
     companion object {
         const val LANGUAGE = "language"
         const val LANGUAGE_CODE = "language_code"
+        const val IS_INTRO_SCREEN_DONE = "is_intro_screen_done"
     }
 
     override fun setLanguage(language: String) {
@@ -28,5 +29,13 @@ class PreferencesHelperImpl constructor(context: Context) : PreferenceHelper {
 
     override fun getLanguageCode(): String {
         return mPrefs.getString(LANGUAGE_CODE, "en").toString()
+    }
+
+    override fun setIsIntroScreenDone(isIntroScreenDone: Boolean) {
+        mPrefs.edit().putBoolean(IS_INTRO_SCREEN_DONE, isIntroScreenDone).apply()
+    }
+
+    override fun isIntroScreenDone(): Boolean {
+        return mPrefs.getBoolean(IS_INTRO_SCREEN_DONE, false)
     }
 }

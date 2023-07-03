@@ -10,4 +10,11 @@
     <string name="russian_code">ru</string>
     <string name="please_select_language">Выберите язык</string>
     <string name="intro_next">Следующий</string>
+    <string name="intro_skip">Пропускать</string>
+    <string name="title_text_1">Название 1</string>
+    <string name="title_text_2">Название 2</string>
+    <string name="title_text_3">Название 3</string>
+    <string name="description_text_1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eleifend tincidunt rhoncus.</string>
+    <string name="description_text_2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eleifend tincidunt rhoncus.</string>
+    <string name="description_text_3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eleifend tincidunt rhoncus.</string>
 </resources>

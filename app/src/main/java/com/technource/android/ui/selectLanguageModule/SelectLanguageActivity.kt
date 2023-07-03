@@ -9,6 +9,7 @@ import com.example.android_kotlin_boilerplate.databinding.ActivitySelectLanguage
 import com.technource.android.base.BaseActivity
 import com.technource.android.preference.PreferencesHelperImpl
 import com.technource.android.ui.introScreenModule.OnBoardActivity
+import com.technource.android.ui.welcomeScreenModule.WelcomeActivity
 import com.technource.android.utils.changeLanguage
 import com.technource.android.utils.errorToast
 import java.util.*
@@ -81,10 +82,15 @@ class SelectLanguageActivity : BaseActivity<ActivitySelectLanguageBinding>() {
     override fun click() {
         binding.nextBtn.setOnClickListener {
             if (binding.languages.text.isNotEmpty()) {
-                startActivity(Intent(this@SelectLanguageActivity, OnBoardActivity::class.java))
-                finish()
-                overridePendingTransition(R.anim.slide_in_up, R.anim.nothing_ani)
-                6
+                if (preference.isIntroScreenDone()) {
+                    startActivity(Intent(this@SelectLanguageActivity, WelcomeActivity::class.java))
+                    finish()
+                    overridePendingTransition(R.anim.slide_in_up, R.anim.nothing_ani)
+                } else {
+                    startActivity(Intent(this@SelectLanguageActivity, OnBoardActivity::class.java))
+                    finish()
+                    overridePendingTransition(R.anim.slide_in_up, R.anim.nothing_ani)
+                }
             } else {
                 Toast(this).errorToast(resources.getString(R.string.please_select_language), this)
             }
