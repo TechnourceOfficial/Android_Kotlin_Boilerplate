@@ -13,6 +13,13 @@
         android:theme="@style/Theme.AndroidKotlinBoilerplate"
         tools:targetApi="31">
         <activity
+            android:name=".TermsViewActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name="com.technource.android.ui.registrationModule.SignupActivity"
             android:exported="false">
             <meta-data

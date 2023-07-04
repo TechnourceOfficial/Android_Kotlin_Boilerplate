@@ -49,9 +49,45 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
+    <!--    EditText Style-->
+    <style name="editTextStyle" parent="android:style/Widget.EditText">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorHint">@color/kcCaptionLightGray</item>
+        <item name="android:textSize">@dimen/sp_14</item>
+        <item name="fontFamily">@font/montserrat_regular</item>
+        <item name="android:lines">1</item>
+    </style>
+
     <style name="white14Medium">
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">@dimen/sp_14</item>
         <item name="fontFamily">@font/montserrat_medium</item>
+    </style>
+
+    <style name="yellowText">
+        <item name="android:textColor">@color/kcYellow</item>
+        <item name="android:textSize">@dimen/sp_14</item>
+        <item name="fontFamily">@font/montserrat_medium</item>
+    </style>
+
+    <style name="whiteLargeTitle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/sp_25</item>
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">@font/montserrat_medium</item>
+    </style>
+
+    <style name="black14Medium">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/sp_14</item>
+        <item name="fontFamily">@font/montserrat_medium</item>
+    </style>
+
+    <style name="BottomSheetDialog" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/bottomSheetStyleWrapper</item>
+    </style>
+
+    <style name="bottomSheetStyleWrapper" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
     </style>
 </resources>

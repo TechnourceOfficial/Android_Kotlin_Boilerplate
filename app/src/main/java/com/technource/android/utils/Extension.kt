@@ -3,6 +3,8 @@ package com.technource.android.utils
 import android.app.Activity
 import android.content.Context
 import android.content.res.Configuration
+import android.text.TextUtils
+import android.util.Patterns
 import android.view.Gravity
 import android.view.View
 import android.widget.TextView
@@ -12,6 +14,8 @@ import com.example.android_kotlin_boilerplate.R
 import dev.b3nedikt.app_locale.AppLocale
 import dev.b3nedikt.reword.Reword
 import java.util.*
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 
 //Language Extension
 fun Activity.changeLanguage(context: Context, locale: Locale) {
@@ -76,4 +80,91 @@ fun Toast.successToast(message: String, activity: Activity) {
         view = layout
         show()
     }
+}
+
+fun isValidPassword(password: String): Boolean {
+    val pattern: Pattern
+    val PASSWORD_PATTERN = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\\\$&*~]).{8,}\$"
+    pattern = Pattern.compile(PASSWORD_PATTERN)
+    val matcher: Matcher = pattern.matcher(password)
+    return matcher.matches()
+}
+
+fun isValidEmail(email: String): Boolean {
+    val pattern = Patterns.EMAIL_ADDRESS
+    return pattern.matcher(email).matches()
+}
+
+fun validateEmail(email: String?): ValidationStatus {
+    return when {
+        email.isNullOrEmpty() -> ValidationStatus.EMPTY_EMAIL
+        !isValidEmail(email) -> ValidationStatus.INVALID_EMAIL
+        else -> ValidationStatus.VALID
+    }
+}
+
+fun validatePassword(password: String?): ValidationStatus {
+    return when {
+        password.isNullOrEmpty() -> ValidationStatus.EMPTY_PASSWORD
+        !isValidPassword(password) -> ValidationStatus.INVALID_PASSWORD
+        else -> ValidationStatus.VALID
+    }
+}
+
+fun validFirstName(v: String?):ValidationStatus {
+    return when{
+        v.isNullOrEmpty() -> ValidationStatus.EMPTY_FIRSTNAME
+        else -> ValidationStatus.VALID
+    }
+}
+
+fun validLastName(v: String?):ValidationStatus {
+    return when{
+        v.isNullOrEmpty() -> ValidationStatus.EMPTY_LASTNAME
+        else -> ValidationStatus.VALID
+    }
+}
+
+fun validUsername(v: String?):ValidationStatus {
+    return when{
+        v.isNullOrEmpty() -> ValidationStatus.EMPTY_USERNAME
+        else -> ValidationStatus.VALID
+    }
+}
+
+fun validHomeAddress(v: String?):ValidationStatus {
+    return when{
+        v.isNullOrEmpty() -> ValidationStatus.EMPTY_USERNAME
+        else -> ValidationStatus.VALID
+    }
+}
+
+fun validOfficeAddress(v: String?):ValidationStatus {
+    return when{
+        v.isNullOrEmpty() -> ValidationStatus.EMPTY_USERNAME
+        else -> ValidationStatus.VALID
+    }
+}
+
+fun validMobile(v: String?):ValidationStatus {
+    return when{
+        v.isNullOrEmpty() -> ValidationStatus.EMPTY_MOBILENO
+        else -> ValidationStatus.VALID
+    }
+}
+
+fun validConfirmPassword(password: String?, confirmPassword: String?): ValidationStatus {
+    // validate confirm password
+    if (TextUtils.isEmpty(confirmPassword)) {
+        return ValidationStatus.EMPTY_CONFIRM_PASSWORD
+    }
+    if (password != confirmPassword) {
+        return ValidationStatus.MISMATCHED_PASSWORDS
+    }
+    return ValidationStatus.VALID
+}
+
+fun ValidationStatus.getErrorMessage(context: Context): String? {
+    val errorMessageResId = ValidationConstants.validationStatusErrorMap[this]
+    return errorMessageResId?.let { context.getString(it) }
 }
