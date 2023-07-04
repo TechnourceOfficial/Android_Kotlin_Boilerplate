@@ -7,6 +7,7 @@ import android.text.TextUtils
 import android.util.Patterns
 import android.view.Gravity
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.ContentFrameLayout
@@ -167,4 +168,11 @@ fun validConfirmPassword(password: String?, confirmPassword: String?): Validatio
 fun ValidationStatus.getErrorMessage(context: Context): String? {
     val errorMessageResId = ValidationConstants.validationStatusErrorMap[this]
     return errorMessageResId?.let { context.getString(it) }
+}
+
+// Function to hide the keyboard
+fun hideKeyboard(context: Context, view: View) {
+    val inputMethodManager =
+        context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
 }
