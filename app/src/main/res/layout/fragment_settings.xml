@@ -1,14 +1,122 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.technource.android.ui.settingsModule.SettingsFragment">
+    android:fitsSystemWindows="true">
 
-    <TextView
-        style="@style/black25Bold"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="@string/bottom_menu_4" />
+        android:orientation="vertical">
+        <!-- Let's add fragment -->
 
-</FrameLayout>
+        <TextView
+            style="@style/black25Bold"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/bottom_menu_4" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/drawer_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="end"
+        android:background="@color/kcPrimaryColor">
+
+        <!-- Drawer items -->
+        <include
+            android:id="@+id/navigationHeader"
+            layout="@layout/navigation_header" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/drawer_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/navigationHeader"
+            android:paddingHorizontal="@dimen/dp_10" />
+
+        <LinearLayout
+            android:id="@+id/bottomLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="@dimen/dp_20"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/dp_10">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_2"
+                android:layout_marginBottom="@dimen/dp_20"
+                android:background="@color/kcCaptionLightGray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/userImg" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="@dimen/dp_10">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/dp_22"
+                    android:layout_height="@dimen/dp_22"
+                    android:src="@drawable/ic_deactivate_account" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/deactivateTv"
+                    style="@style/grey14Medium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:text="@string/deactivate_account" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="@dimen/dp_10">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/dp_22"
+                    android:layout_height="@dimen/dp_22"
+                    android:src="@drawable/ic_deactivate_account" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/deleteTV"
+                    style="@style/grey14Medium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:text="@string/delete_account" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/logoutBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="@dimen/dp_10">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/dp_22"
+                    android:layout_height="@dimen/dp_22"
+                    android:src="@drawable/ic_logout" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/logoutTv"
+                    style="@style/grey14Medium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:text="@string/logout" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

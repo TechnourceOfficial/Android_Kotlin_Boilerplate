@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainLinearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_15"
+        android:weightSum="100">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/itemIcon"
+            android:layout_width="@dimen/dp_22"
+            android:layout_height="@dimen/dp_22"
+            android:src="@drawable/ic_bullet" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/itemName"
+            style="@style/grey14Medium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_weight="90"
+            android:text="@string/bottom_menu_1" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/itemDesc"
+            style="@style/grey14Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            tools:text="CN >" />
+    </LinearLayout>
+</LinearLayout>

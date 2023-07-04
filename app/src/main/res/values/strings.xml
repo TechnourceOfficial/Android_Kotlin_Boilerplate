@@ -78,6 +78,14 @@
     <string name="bottom_menu_3">Bottom Menu 3</string>
     <string name="bottom_menu_4">Bottom Menu 4</string>
     <string name="search_here">Search Here</string>
+    <string name="git_repo">Github Repo</string>
+    <string name="more">More</string>
+    <string name="change_language">Change Language</string>
+    <string name="deactivate_account">Deactivate Account</string>
+    <string name="delete_account">Delete Account</string>
+    <string name="logout">Logout</string>
+    <string name="logout_message">Are you sure you want to logout?</string>
+    <string name="cancel">Cancel</string>
     <string-array name="language">
         <item>English</item>
         <item>French</item>
