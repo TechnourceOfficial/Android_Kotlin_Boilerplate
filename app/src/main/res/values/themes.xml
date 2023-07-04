@@ -83,6 +83,13 @@
         <item name="fontFamily">@font/montserrat_medium</item>
     </style>
 
+    <style name="white18Medium">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/sp_18</item>
+        <item name="fontFamily">@font/montserrat_medium</item>
+    </style>
+
+
     <style name="BottomSheetDialog" parent="Theme.Design.Light.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/bottomSheetStyleWrapper</item>
     </style>

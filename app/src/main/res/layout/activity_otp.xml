@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.technource.android.ui.otpModule.OTPViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/kcPrimaryColor"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/headerLayout"
+            layout="@layout/title_header" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fadingEdge="none"
+            android:fillViewport="true">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_20">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/forgotPassImg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp_200"
+                    android:src="@drawable/img_otp_verification"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/forgotPassDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_40"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:gravity="center"
+                    android:text="@string/we_have_sent_you_an_account"
+                    android:textColor="@color/kcCaptionLightGray"
+                    android:textSize="@dimen/sp_14"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/forgotPassImg" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/enterCodeTV"
+                    style="@style/white18Medium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_25"
+                    android:text="@string/enter_the_code"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/forgotPassDesc" />
+
+                <com.chaos.view.PinView
+                    android:id="@+id/pinview"
+                    style="@style/PinWidget.PinView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_25"
+                    android:cursorVisible="true"
+                    android:gravity="center_horizontal"
+                    android:inputType="number"
+                    android:itemBackground="@drawable/edit_text_view_bg"
+                    android:textColor="@color/kcCaptionLightGray"
+                    app:cursorColor="@color/kcCaptionLightGray"
+                    app:hideLineWhenFilled="false"
+                    app:itemCount="6"
+                    app:itemHeight="@dimen/dp_50"
+                    app:itemRadius="@dimen/dp_8"
+                    app:itemSpacing="@dimen/dp_8"
+                    app:itemWidth="@dimen/dp_50"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/enterCodeTV"
+                    app:lineColor="@android:color/transparent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/pinErrorTv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_18"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:gravity="start"
+                    android:text="@string/enter_6_digits_otp"
+                    android:textColor="@color/kcRed"
+                    android:textSize="@dimen/sp_14"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/pinview" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/otpMessage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:gravity="start"
+                    android:text="@string/code_has_been_send_to_your"
+                    android:textColor="@color/kcCaptionLightGray"
+                    android:textSize="@dimen/sp_14"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/pinErrorTv" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/verify"
+                    style="@style/yellowBtnStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_60"
+                    android:layout_marginTop="@dimen/dp_30"
+                    android:onClick="@{() -> viewModel.onLoginClicked()}"
+                    android:text="@string/verify"
+                    app:layout_constraintTop_toBottomOf="@+id/otpMessage" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/dontReceviewOTP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:text="@string/dont_receive_the_otp"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp_14"
+                    app:layout_constraintEnd_toStartOf="@+id/resendOTP"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/verify" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/resendOTP"
+                    style="@style/yellowText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:text="@string/resend_otp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/dontReceviewOTP"
+                    app:layout_constraintTop_toBottomOf="@+id/verify" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp_40"
+                    android:layout_marginTop="@dimen/dp_40"
+                    android:src="@drawable/img_app_logo"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/resendOTP" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

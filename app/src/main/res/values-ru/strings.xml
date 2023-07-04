@@ -60,4 +60,18 @@
     <string name="forgot_password"><u>Забыли пароль?</u></string>
     <string name="dont_have_an_account">"У вас нет аккаунта? </string>
     <string name="sign_up_text"><u>Зарегистрироваться</u></string>
+    <string name="forgot_password_title">Забыли пароль</string>
+    <string name="forgot_password_para">Введите адрес электронной почты, связанный с вашей учетной записью, и мы отправим электронное письмо с инструкциями по сбросу пароля.</string>
+    <string name="forgot_password_button">Отправлять</string>
+    <string name="otp_verification">OTP-подтверждение</string>
+    <string name="we_have_sent_you_an_account">Мы отправили вам код подтверждения учетной записи на указанный вами адрес электронной почты. Введите код, чтобы подтвердить свою учетную запись.</string>
+    <string name="enter_the_code">введите код</string>
+    <string name="enter_6_digits_otp">Пожалуйста, введите 6-значный код</string>
+    <string name="code_has_been_send_to_your">* Код был отправлен на ваш зарегистрированный адрес электронной почты</string>
+    <string name="verify">Проверять</string>
+    <string name="dont_receive_the_otp">Не получили отп? </string>
+    <string name="resend_otp"><u>ПОВТОРИТЬ ОТП</u></string>
+    <string name="set_new_password">Установить новый пароль</string>
+    <string name="set_new_password_message">Здесь вы можете добавить свой новый пароль</string>
+    <string name="reset_password">Сброс пароля</string>
 </resources>

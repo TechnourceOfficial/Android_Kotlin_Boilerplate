@@ -98,6 +98,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(), LoginNavigator {
         }
         binding.forgotPassword.setOnClickListener {
             startActivity(Intent(this@LoginActivity, ForgotPasswordActivity::class.java))
+            finish()
             overridePendingTransition(R.anim.slide_in_up, R.anim.nothing_ani)
         }
         binding.signUpTV.setOnClickListener {

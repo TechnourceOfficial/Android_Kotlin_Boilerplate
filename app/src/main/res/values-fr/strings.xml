@@ -61,4 +61,18 @@
     <string name="forgot_password"><u>Mot de passe oublié?</u></string>
     <string name="dont_have_an_account">Vous n\'avez pas de compte? </string>
     <string name="sign_up_text"><u>S\'inscrire</u></string>
+    <string name="forgot_password_title">Mot de passe oublié</string>
+    <string name="forgot_password_para">Entrez l\'e-mail associé à votre compte et nous vous enverrons un e-mail avec des instructions pour réinitialiser votre mot de passe</string>
+    <string name="forgot_password_button">Envoyer</string>
+    <string name="otp_verification">Vérification OTP</string>
+    <string name="we_have_sent_you_an_account">Nous vous avons envoyé un code de vérification de compte sur votre e-mail saisi. </string>
+    <string name="enter_the_code">Entrer le code</string>
+    <string name="enter_6_digits_otp">Veuillez entrer le code à 6 chiffres</string>
+    <string name="code_has_been_send_to_your">* Le code a été envoyé à votre adresse e-mail enregistrée.</string>
+    <string name="verify">Vérifier</string>
+    <string name="dont_receive_the_otp">Vous ne recevez pas l\'OTP ? </string>
+    <string name="resend_otp"><u>RENVOYER OTP</u></string>
+    <string name="set_new_password">Definir un nouveau mot de passe</string>
+    <string name="set_new_password_message">Ici vous pouvez ajouter votre nouveau mot de passe</string>
+    <string name="reset_password">réinitialiser le mot de passe</string>
 </resources>
