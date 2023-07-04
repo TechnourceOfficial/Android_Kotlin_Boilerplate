@@ -1,0 +1,96 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.technource.android.ui.homeModule.HomeFragment">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_20">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/appCompatImageView2"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            android:src="@drawable/ic_technource_logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/searchImg"
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="@dimen/dp_30"
+            android:layout_gravity="end"
+            android:src="@drawable/ic_search_icon"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/searchLayout"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_50"
+            android:layout_marginStart="@dimen/dp_10"
+            android:background="@drawable/border_background"
+            android:orientation="horizontal"
+            android:padding="@dimen/dp_5"
+            android:visibility="gone"
+            android:weightSum="100"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/appCompatImageView2"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/back"
+                android:layout_width="@dimen/dp_20"
+                android:layout_height="@dimen/dp_20"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_back"
+                app:tint="@color/black" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/searchTextInput"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/dp_10"
+                android:layout_weight="90"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
+                app:errorIconDrawable="@null"
+                app:hintEnabled="false"
+                app:layout_constraintEnd_toStartOf="@id/lastnameTextInput"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editImgLayout">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/searchET"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_40"
+                    android:background="@color/white"
+                    android:hint="@string/search_here"
+                    android:inputType="text"
+                    android:padding="@dimen/dp_10" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/dp_25"
+                android:layout_height="@dimen/dp_25"
+                android:layout_gravity="center"
+                android:layout_weight="10"
+                android:src="@drawable/ic_search_icon" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        style="@style/black25Bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/bottom_menu_1" />
+
+</FrameLayout>

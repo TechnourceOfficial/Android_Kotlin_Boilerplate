@@ -75,4 +75,9 @@
     <string name="set_new_password">Definir un nouveau mot de passe</string>
     <string name="set_new_password_message">Ici vous pouvez ajouter votre nouveau mot de passe</string>
     <string name="reset_password">réinitialiser le mot de passe</string>
+    <string name="bottom_menu_1">Bottom Menu 1</string>
+    <string name="bottom_menu_2">Bottom Menu 2</string>
+    <string name="bottom_menu_3">Bottom Menu 3</string>
+    <string name="bottom_menu_4">Bottom Menu 4</string>
+    <string name="search_here">Cherche ici</string>
 </resources>

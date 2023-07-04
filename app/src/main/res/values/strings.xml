@@ -73,9 +73,16 @@
     <string name="set_new_password">Set New Password</string>
     <string name="set_new_password_message">Here you can add your new password</string>
     <string name="reset_password">Reset Password</string>
+    <string name="bottom_menu_1">Bottom Menu 1</string>
+    <string name="bottom_menu_2">Bottom Menu 2</string>
+    <string name="bottom_menu_3">Bottom Menu 3</string>
+    <string name="bottom_menu_4">Bottom Menu 4</string>
+    <string name="search_here">Search Here</string>
     <string-array name="language">
         <item>English</item>
         <item>French</item>
         <item>Russian</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
