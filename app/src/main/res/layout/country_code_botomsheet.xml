@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bottomsheet_bg"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/appCompatTextView"
+        style="@style/whiteLargeTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bottom_sheet_header_style"
+        android:gravity="center"
+        android:paddingVertical="@dimen/dp_15"
+        android:text="@string/select_country_code" />
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/searchMaterialCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/dp_8"
+        app:cardElevation="@dimen/dp_12"
+        app:cardUseCompatPadding="true">
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchCountryEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:iconifiedByDefault="false"
+            app:queryBackground="@android:color/transparent"
+            app:queryHint="@string/search" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCountryList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginVertical="@dimen/dp_10"
+        tools:listitem="@layout/country_code_item_layout" />
+</LinearLayout>
