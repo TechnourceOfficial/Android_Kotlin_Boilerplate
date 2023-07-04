@@ -47,4 +47,11 @@ class PreferencesHelperImpl constructor(context: Context) : PreferenceHelper {
     override fun isLoggedIn(): Boolean {
         return mPrefs.getBoolean(IS_LOGGED_IN, false)
     }
+
+    override fun clear() {
+        mPrefs.edit().remove(IS_LOGGED_IN).apply()
+        mPrefs.edit().remove(IS_INTRO_SCREEN_DONE).apply()
+        mPrefs.edit().remove(LANGUAGE).apply()
+        mPrefs.edit().remove(LANGUAGE_CODE).apply()
+    }
 }

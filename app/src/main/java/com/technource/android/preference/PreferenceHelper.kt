@@ -11,6 +11,8 @@ interface PreferenceHelper {
     fun setIsIntroScreenDone(isIntroScreenDone: Boolean)
     fun isIntroScreenDone(): Boolean
 
-    fun setIsLoggedIn(isLogin : Boolean)
+    fun setIsLoggedIn(isLogin: Boolean)
     fun isLoggedIn(): Boolean
+
+    fun clear()
 }

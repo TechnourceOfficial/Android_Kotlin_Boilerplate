@@ -79,4 +79,12 @@
     <string name="bottom_menu_3">Bottom Menu 3</string>
     <string name="bottom_menu_4">Bottom Menu 4</string>
     <string name="search_here">Поищи здесь</string>
+    <string name="git_repo">Github Repo</string>
+    <string name="more">More</string>
+    <string name="change_language">Изменение языка</string>
+    <string name="deactivate_account">Деактивировать аккаунт</string>
+    <string name="delete_account">Удалить аккаунт</string>
+    <string name="logout">Выйти</string>
+    <string name="logout_message">Вы действительно хотите выйти?</string>
+    <string name="cancel">Отмена</string>
 </resources>
