@@ -13,6 +13,7 @@ class PreferencesHelperImpl constructor(context: Context) : PreferenceHelper {
         const val LANGUAGE = "language"
         const val LANGUAGE_CODE = "language_code"
         const val IS_INTRO_SCREEN_DONE = "is_intro_screen_done"
+        const val IS_LOGGED_IN = "is_logged_in"
     }
 
     override fun setLanguage(language: String) {
@@ -37,5 +38,13 @@ class PreferencesHelperImpl constructor(context: Context) : PreferenceHelper {
 
     override fun isIntroScreenDone(): Boolean {
         return mPrefs.getBoolean(IS_INTRO_SCREEN_DONE, false)
+    }
+
+    override fun setIsLoggedIn(isLogin: Boolean) {
+        mPrefs.edit().putBoolean(IS_LOGGED_IN, isLogin).apply()
+    }
+
+    override fun isLoggedIn(): Boolean {
+        return mPrefs.getBoolean(IS_LOGGED_IN, false)
     }
 }
