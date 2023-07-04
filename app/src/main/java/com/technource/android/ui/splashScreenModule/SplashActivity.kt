@@ -7,6 +7,7 @@ import com.example.android_kotlin_boilerplate.R
 import com.example.android_kotlin_boilerplate.databinding.ActivitySplashBinding
 import com.technource.android.base.BaseActivity
 import com.technource.android.preference.PreferencesHelperImpl
+import com.technource.android.ui.dashboardModule.DashboardActivity
 import com.technource.android.ui.selectLanguageModule.SelectLanguageActivity
 import com.technource.android.utils.LocaleHelper
 
@@ -32,9 +33,17 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
         }
         // Delayed execution using Handler to show the splash screen
         Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this@SplashActivity, SelectLanguageActivity::class.java))
-            finish()
-            overridePendingTransition(R.anim.slide_in_up, R.anim.nothing_ani)
+            if (preference.isLoggedIn()) {
+                // If user is logged in, navigate to DashboardActivity
+                startActivity(Intent(this@SplashActivity, DashboardActivity::class.java))
+                finish()
+                overridePendingTransition(R.anim.slide_in_up, R.anim.nothing_ani)
+            } else {
+                // If user is not logged in, navigate to SelectLanguageActivity
+                startActivity(Intent(this@SplashActivity, SelectLanguageActivity::class.java))
+                finish()
+                overridePendingTransition(R.anim.slide_in_up, R.anim.nothing_ani)
+            }
         }, 2000)
     }
 

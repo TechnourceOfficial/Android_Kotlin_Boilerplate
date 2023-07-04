@@ -54,4 +54,11 @@
     <string name="log_in"><u>Connexion</u></string>
     <string name="select_country_code">Sélectionnez l\'indicatif du pays</string>
     <string name="search">Search</string>
+    <string name="welcome_back">Content de te revoir</string>
+    <string name="glad_to_see_you">Heureux de vous revoir!</string>
+    <string name="email_or_username">E-mail ou nom d\'utilisateur</string>
+    <string name="password">Mot de passe</string>
+    <string name="forgot_password"><u>Mot de passe oublié?</u></string>
+    <string name="dont_have_an_account">Vous n\'avez pas de compte? </string>
+    <string name="sign_up_text"><u>S\'inscrire</u></string>
 </resources>

@@ -53,4 +53,11 @@
     <string name="log_in"><u>Log in</u></string>
     <string name="select_country_code">Select Country Code</string>
     <string name="search">Search</string>
+    <string name="welcome_back">Welcome Back</string>
+    <string name="glad_to_see_you">Glad to see you, Again!</string>
+    <string name="email_or_username">Email or Username</string>
+    <string name="password">Password</string>
+    <string name="forgot_password"><u>Forgot Password?</u></string>
+    <string name="dont_have_an_account">Don’t have an account? </string>
+    <string name="sign_up_text"><u>Sign Up</u></string>
 </resources>
