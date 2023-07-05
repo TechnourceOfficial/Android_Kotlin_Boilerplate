@@ -22,7 +22,15 @@ interface PreferenceHelper {
     @return The language code.
     */
     fun getLanguageCode(): String
+    /**
+    Sets the flag indicating whether the intro screen has been completed.
+    @param isIntroScreenDone True if intro screen is completed, false otherwise.
+     */
     fun setIsIntroScreenDone(isIntroScreenDone: Boolean)
+    /**
+    Checks if the intro screen has been completed.
+    @return True if intro screen is completed, false otherwise.
+     */
     fun isIntroScreenDone(): Boolean
     fun setIsLoggedIn(isLogin: Boolean)
     fun isLoggedIn(): Boolean
