@@ -11,7 +11,6 @@ class PreferencesHelperImpl constructor(context: Context) : PreferenceHelper {
         context.getSharedPreferences(APP_SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE)
 
     companion object {
-        const val IS_INTRO_SCREEN_DONE = "is_intro_screen_done"
         const val IS_LOGGED_IN = "is_logged_in"
     }
 
@@ -32,11 +31,11 @@ class PreferencesHelperImpl constructor(context: Context) : PreferenceHelper {
     }
 
     override fun setIsIntroScreenDone(isIntroScreenDone: Boolean) {
-        mPrefs.edit().putBoolean(IS_INTRO_SCREEN_DONE, isIntroScreenDone).apply()
+        mPrefs.edit().putBoolean(Constants.IS_INTRO_SCREEN_DONE, isIntroScreenDone).apply()
     }
 
     override fun isIntroScreenDone(): Boolean {
-        return mPrefs.getBoolean(IS_INTRO_SCREEN_DONE, false)
+        return mPrefs.getBoolean(Constants.IS_INTRO_SCREEN_DONE, false)
     }
 
     override fun setIsLoggedIn(isLogin: Boolean) {
@@ -49,7 +48,7 @@ class PreferencesHelperImpl constructor(context: Context) : PreferenceHelper {
 
     override fun clear() {
         mPrefs.edit().remove(IS_LOGGED_IN).apply()
-        mPrefs.edit().remove(IS_INTRO_SCREEN_DONE).apply()
+        mPrefs.edit().remove(Constants.IS_INTRO_SCREEN_DONE).apply()
         mPrefs.edit().remove(Constants.LANGUAGE).apply()
         mPrefs.edit().remove(Constants.LANGUAGE_CODE).apply()
     }

@@ -47,6 +47,10 @@ class OnBoardActivity : BaseActivity<ActivityOnBoardBinding>() {
         }
     }
 
+    /**
+    Adds dots to indicate the position in the onBoarding process.
+    @param position The current position in the view pager.
+     */
     private fun addDots(position: Int) {
         // Create an array of TextViews to represent the dots
         val dots = binding.viewPager.adapter?.let { arrayOfNulls<TextView>(it.count) }
