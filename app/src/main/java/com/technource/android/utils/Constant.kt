@@ -2,7 +2,7 @@ package com.technource.android.utils
 
 
 class Constants {
-    companion object {
+        companion object {
         const val APP_SHARED_PREFERENCE_NAME = "android_boilerplate_preference"
         const val LANGUAGE = "language"
         const val LANGUAGE_CODE = "language_code"
