@@ -15,7 +15,7 @@ import com.example.android_kotlin_boilerplate.databinding.LogoutDialogBinding
 import com.technource.android.base.BaseFragment
 import com.technource.android.commonInterface.RecyclerviewInterface
 import com.technource.android.preference.PreferencesHelperImpl
-import com.technource.android.ui.MoreModule.AboutActivity
+import com.technource.android.ui.moreModule.AboutActivity
 import com.technource.android.ui.changeLanguageModule.ChangeLanguageActivity
 import com.technource.android.ui.editProfileModule.EditProfileActivity
 import com.technource.android.ui.loginModule.LoginActivity

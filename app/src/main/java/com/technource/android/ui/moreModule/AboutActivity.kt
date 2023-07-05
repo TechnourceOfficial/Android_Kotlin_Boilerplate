@@ -1,19 +1,16 @@
-package com.technource.android.ui.MoreModule
+package com.technource.android.ui.moreModule
 
 import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.android_kotlin_boilerplate.R
-import com.example.android_kotlin_boilerplate.databinding.ActivityMoreBinding
+import com.example.android_kotlin_boilerplate.databinding.ActivityAboutBinding
 import com.technource.android.base.BaseActivity
 import com.technource.android.commonInterface.RecyclerviewInterface
-import com.technource.android.ui.moreModule.MoreListAdapter
-import com.technource.android.ui.moreModule.MoreModel
-import com.technource.android.ui.moreModule.MoreViewModel
 import com.technource.android.ui.viewTermsModule.TermsViewActivity
 
-class AboutActivity : BaseActivity<ActivityMoreBinding>() {
-    override fun getViewBinding() = ActivityMoreBinding.inflate(layoutInflater)
+class AboutActivity : BaseActivity<ActivityAboutBinding>() {
+    override fun getViewBinding() = ActivityAboutBinding.inflate(layoutInflater)
     private lateinit var moreListAdapter: MoreListAdapter
     val moreModel = ArrayList<MoreModel>()
     private lateinit var moreViewModel: MoreViewModel
