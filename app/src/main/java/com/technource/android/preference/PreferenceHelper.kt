@@ -32,7 +32,15 @@ interface PreferenceHelper {
     @return True if intro screen is completed, false otherwise.
      */
     fun isIntroScreenDone(): Boolean
+    /**
+    Sets the flag indicating whether the user is logged in.
+    @param isLogin True if the user is logged in, false otherwise.
+     */
     fun setIsLoggedIn(isLogin: Boolean)
+    /**
+    Checks if the user is logged in.
+    @return True if the user is logged in, false otherwise.
+     */
     fun isLoggedIn(): Boolean
     fun clear()
 }

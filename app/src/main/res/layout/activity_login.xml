@@ -37,6 +37,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/welcome_back"
                     android:textColor="@color/white"
+                    android:layout_marginTop="@dimen/dp_40"
                     android:textSize="@dimen/sp_32"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

@@ -10,10 +10,6 @@ class PreferencesHelperImpl constructor(context: Context) : PreferenceHelper {
     private var mPrefs: SharedPreferences =
         context.getSharedPreferences(APP_SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE)
 
-    companion object {
-        const val IS_LOGGED_IN = "is_logged_in"
-    }
-
     override fun setLanguage(language: String) {
         mPrefs.edit().putString(Constants.LANGUAGE, language).apply()
     }
@@ -39,15 +35,15 @@ class PreferencesHelperImpl constructor(context: Context) : PreferenceHelper {
     }
 
     override fun setIsLoggedIn(isLogin: Boolean) {
-        mPrefs.edit().putBoolean(IS_LOGGED_IN, isLogin).apply()
+        mPrefs.edit().putBoolean(Constants.IS_LOGGED_IN, isLogin).apply()
     }
 
     override fun isLoggedIn(): Boolean {
-        return mPrefs.getBoolean(IS_LOGGED_IN, false)
+        return mPrefs.getBoolean(Constants.IS_LOGGED_IN, false)
     }
 
     override fun clear() {
-        mPrefs.edit().remove(IS_LOGGED_IN).apply()
+        mPrefs.edit().remove(Constants.IS_LOGGED_IN).apply()
         mPrefs.edit().remove(Constants.IS_INTRO_SCREEN_DONE).apply()
         mPrefs.edit().remove(Constants.LANGUAGE).apply()
         mPrefs.edit().remove(Constants.LANGUAGE_CODE).apply()
