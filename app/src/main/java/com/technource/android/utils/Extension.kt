@@ -19,6 +19,11 @@ import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 //Language Extension
+/**
+Changes the language of the activity to the specified locale.
+@param context The context of the activity.
+@param locale The locale to set as the desired language.
+ */
 fun Activity.changeLanguage(context: Context, locale: Locale) {
     // Set the desired locale in the AppLocale class
     AppLocale.desiredLocale = locale
@@ -45,6 +50,11 @@ fun Activity.changeLanguage(context: Context, locale: Locale) {
     rootView.requestLayout()
 }
 
+/**
+Displays an error toast with the specified message in the given activity.
+@param message The message to be displayed in the toast.
+@param activity The activity in which the toast should be shown.
+ */
 fun Toast.errorToast(message: String, activity: Activity) {
     val layout = activity.layoutInflater.inflate(
         R.layout.error_toast,
@@ -64,6 +74,11 @@ fun Toast.errorToast(message: String, activity: Activity) {
     }
 }
 
+/**
+Displays a success toast with the specified message in the given activity.
+@param message The message to be displayed in the toast.
+@param activity The activity in which the toast should be shown.
+ */
 fun Toast.successToast(message: String, activity: Activity) {
     val layout = activity.layoutInflater.inflate(
         R.layout.success_toast,
@@ -112,43 +127,43 @@ fun validatePassword(password: String?): ValidationStatus {
     }
 }
 
-fun validFirstName(v: String?):ValidationStatus {
-    return when{
+fun validFirstName(v: String?): ValidationStatus {
+    return when {
         v.isNullOrEmpty() -> ValidationStatus.EMPTY_FIRSTNAME
         else -> ValidationStatus.VALID
     }
 }
 
-fun validLastName(v: String?):ValidationStatus {
-    return when{
+fun validLastName(v: String?): ValidationStatus {
+    return when {
         v.isNullOrEmpty() -> ValidationStatus.EMPTY_LASTNAME
         else -> ValidationStatus.VALID
     }
 }
 
-fun validUsername(v: String?):ValidationStatus {
-    return when{
+fun validUsername(v: String?): ValidationStatus {
+    return when {
         v.isNullOrEmpty() -> ValidationStatus.EMPTY_USERNAME
         else -> ValidationStatus.VALID
     }
 }
 
-fun validHomeAddress(v: String?):ValidationStatus {
-    return when{
+fun validHomeAddress(v: String?): ValidationStatus {
+    return when {
         v.isNullOrEmpty() -> ValidationStatus.EMPTY_USERNAME
         else -> ValidationStatus.VALID
     }
 }
 
-fun validOfficeAddress(v: String?):ValidationStatus {
-    return when{
+fun validOfficeAddress(v: String?): ValidationStatus {
+    return when {
         v.isNullOrEmpty() -> ValidationStatus.EMPTY_USERNAME
         else -> ValidationStatus.VALID
     }
 }
 
-fun validMobile(v: String?):ValidationStatus {
-    return when{
+fun validMobile(v: String?): ValidationStatus {
+    return when {
         v.isNullOrEmpty() -> ValidationStatus.EMPTY_MOBILENO
         else -> ValidationStatus.VALID
     }
