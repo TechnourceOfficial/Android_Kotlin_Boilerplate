@@ -87,4 +87,11 @@
     <string name="logout">Logout</string>
     <string name="logout_message">Are you sure you want to logout?</string>
     <string name="cancel">Cancel</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="home_address">Home Address</string>
+    <string name="office_address">Office Address</string>
+    <string name="save">Save</string>
+    <string name="profile_update">Profile Updated</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
 </resources>

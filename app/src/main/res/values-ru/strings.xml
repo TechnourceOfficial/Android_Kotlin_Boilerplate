@@ -87,4 +87,11 @@
     <string name="logout">Выйти</string>
     <string name="logout_message">Вы действительно хотите выйти?</string>
     <string name="cancel">Отмена</string>
+    <string name="edit_profile">Редактировать профиль</string>
+    <string name="home_address">Домашний адрес</string>
+    <string name="office_address">Адрес офиса</string>
+    <string name="save">Сохранять</string>
+    <string name="profile_update">Профиль обновлен</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
 </resources>
