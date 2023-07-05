@@ -11,15 +11,6 @@ class CountryAdapter(private var countryList: List<Country>) :
 
     private lateinit var setOnItemClick: RecyclerviewInterface
 
-    fun setOnItemClick(onItemClick: RecyclerviewInterface) {
-        setOnItemClick = onItemClick
-    }
-
-    fun setFilteredList(mList: List<Country>) {
-        this.countryList = mList
-        notifyDataSetChanged()
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountryViewHolder {
         val view =
             CountryCodeItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -37,6 +28,23 @@ class CountryAdapter(private var countryList: List<Country>) :
 
     override fun getItemCount(): Int {
         return countryList.size
+    }
+
+    /**
+    Sets the click listener for the RecyclerView item.
+    @param onItemClick The click listener to be set.
+     */
+    fun setOnItemClick(onItemClick: RecyclerviewInterface) {
+        setOnItemClick = onItemClick
+    }
+
+    /**
+    Sets the filtered list of countries and notifies the adapter of the data change.
+    @param mList The filtered list of countries to be set.
+     */
+    fun setFilteredList(mList: List<Country>) {
+        this.countryList = mList
+        notifyDataSetChanged()
     }
 
     class CountryViewHolder(val binding: CountryCodeItemLayoutBinding) :

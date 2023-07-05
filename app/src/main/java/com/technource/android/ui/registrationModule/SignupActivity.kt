@@ -288,8 +288,11 @@ class SignupActivity : BaseActivity<ActivitySignupBinding>(), SignupNavigator {
         bottomSheetDialog.show()
     }
 
+    /**
+    Filters the country list based on the provided query.
+    @param query The search query to filter the country list.
+     */
     private fun filterList(query: String?) {
-
         if (query != null) {
             val filteredList = ArrayList<Country>()
             for (i in countryList) {
@@ -310,6 +313,10 @@ class SignupActivity : BaseActivity<ActivitySignupBinding>(), SignupNavigator {
         }
     }
 
+    /**
+    Adds JSON data to the country list.
+    Loads JSON data from the assets folder, parses it, and populates the countryList.
+     */
     private fun addJSONDataToList() {
         try {
             // Load the JSON data from the assets folder and create a JSONObject
@@ -336,6 +343,10 @@ class SignupActivity : BaseActivity<ActivitySignupBinding>(), SignupNavigator {
         }
     }
 
+    /**
+    Loads JSON data from the "country_list.json" file in the assets folder.
+    @return The loaded JSON data as a String, or null if an exception occurs.
+     */
     private fun loadJSONFromAssets(): String? {
         val json: String = try {
             // Open and read the "country_list.json" file from the assets folder

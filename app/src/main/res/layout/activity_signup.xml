@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.technource.android.ui.registrationModule.SignupViewModel" />
@@ -271,23 +273,25 @@
                         android:id="@+id/checkbox"
                         android:layout_width="@dimen/dp_20"
                         android:layout_height="@dimen/dp_30"
+                        android:layout_gravity="center"
                         android:layout_weight="5"
                         android:buttonTint="@color/white" />
 
-                    <LinearLayout
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
                         android:layout_marginStart="@dimen/dp_5"
                         android:layout_weight="80"
                         android:orientation="horizontal">
 
                         <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/bySignupYouText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/by_signing_up_you"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/sp_10" />
+                            android:textSize="@dimen/sp_14"
+                            tools:ignore="MissingConstraints" />
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/termsCondition"
@@ -296,15 +300,18 @@
                             android:layout_marginStart="@dimen/dp_2"
                             android:text="@string/terms_and_conditions"
                             android:textColor="@color/kcYellow"
-                            android:textSize="@dimen/sp_10" />
+                            android:textSize="@dimen/sp_14"
+                            tools:ignore="MissingConstraints" />
 
                         <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/and"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/dp_2"
                             android:text="@string/and"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/sp_10" />
+                            android:textSize="@dimen/sp_14"
+                            tools:ignore="MissingConstraints" />
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/privacyPolicy"
@@ -313,8 +320,22 @@
                             android:layout_marginStart="@dimen/dp_2"
                             android:text="@string/privacy_policy"
                             android:textColor="@color/kcYellow"
-                            android:textSize="@dimen/sp_10" />
-                    </LinearLayout>
+                            android:textSize="@dimen/sp_14"
+                            tools:ignore="MissingConstraints" />
+
+                        <androidx.constraintlayout.helper.widget.Flow
+                            android:layout_width="@dimen/dp_0"
+                            android:layout_height="wrap_content"
+                            app:constraint_referenced_ids="bySignupYouText,termsCondition,and,privacyPolicy"
+                            app:flow_horizontalBias="0"
+                            app:flow_horizontalGap="@dimen/dp_2"
+                            app:flow_horizontalStyle="packed"
+                            app:flow_verticalBias="0"
+                            app:flow_wrapMode="chain"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </LinearLayout>
 
@@ -354,7 +375,7 @@
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/dp_40"
+                    android:layout_height="@dimen/dp_38"
                     android:layout_marginTop="@dimen/dp_40"
                     android:src="@drawable/img_app_logo"
                     app:layout_constraintEnd_toEndOf="parent"
