@@ -1,7 +1,5 @@
 package com.technource.android.ui.dashboardModule
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.android_kotlin_boilerplate.R
 import com.example.android_kotlin_boilerplate.databinding.ActivityDashboardBinding
@@ -53,6 +51,10 @@ class DashboardActivity : BaseActivity<ActivityDashboardBinding>() {
 
     override fun click() {}
 
+    /**
+    Loads the specified fragment into the container.
+    @param fragment The fragment to be loaded.
+     */
     private fun loadFragment(fragment: Fragment) {
         // Replace the container with the specified fragment
         val transaction = supportFragmentManager.beginTransaction()
