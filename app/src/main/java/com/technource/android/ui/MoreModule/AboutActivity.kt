@@ -1,4 +1,4 @@
-package com.technource.android.ui.moreModule
+package com.technource.android.ui.MoreModule
 
 import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
@@ -7,9 +7,12 @@ import com.example.android_kotlin_boilerplate.R
 import com.example.android_kotlin_boilerplate.databinding.ActivityMoreBinding
 import com.technource.android.base.BaseActivity
 import com.technource.android.commonInterface.RecyclerviewInterface
+import com.technource.android.ui.moreModule.MoreListAdapter
+import com.technource.android.ui.moreModule.MoreModel
+import com.technource.android.ui.moreModule.MoreViewModel
 import com.technource.android.ui.viewTermsModule.TermsViewActivity
 
-class MoreActivity : BaseActivity<ActivityMoreBinding>() {
+class AboutActivity : BaseActivity<ActivityMoreBinding>() {
     override fun getViewBinding() = ActivityMoreBinding.inflate(layoutInflater)
     private lateinit var moreListAdapter: MoreListAdapter
     val moreModel = ArrayList<MoreModel>()
@@ -39,7 +42,7 @@ class MoreActivity : BaseActivity<ActivityMoreBinding>() {
         // Set item click listener for the MoreListAdapter
         moreListAdapter.setOnItemClick(object : RecyclerviewInterface {
             override fun onItemClick(position: Int) {
-                val intent = Intent(this@MoreActivity, TermsViewActivity::class.java)
+                val intent = Intent(this@AboutActivity, TermsViewActivity::class.java)
                 intent.putExtra("url", moreModel[position].url)
                 startActivity(intent)
                 overridePendingTransition(R.anim.slide_in_up, R.anim.nothing_ani)

@@ -15,7 +15,7 @@ import com.example.android_kotlin_boilerplate.databinding.LogoutDialogBinding
 import com.technource.android.base.BaseFragment
 import com.technource.android.commonInterface.RecyclerviewInterface
 import com.technource.android.preference.PreferencesHelperImpl
-import com.technource.android.ui.moreModule.MoreActivity
+import com.technource.android.ui.MoreModule.AboutActivity
 import com.technource.android.ui.changeLanguageModule.ChangeLanguageActivity
 import com.technource.android.ui.editProfileModule.EditProfileActivity
 import com.technource.android.ui.loginModule.LoginActivity
@@ -64,7 +64,7 @@ class SettingsFragment(private val mActivity: AppCompatActivity) :
                     }
                     6 -> {
                         // Start the MoreActivity when "More" is selected
-                        startActivity(Intent(mActivity, MoreActivity::class.java))
+                        startActivity(Intent(mActivity, AboutActivity::class.java))
                         mActivity.overridePendingTransition(R.anim.slide_in_up, R.anim.nothing_ani)
                     }
                     else -> {
