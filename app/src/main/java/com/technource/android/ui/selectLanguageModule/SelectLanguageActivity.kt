@@ -97,6 +97,11 @@ class SelectLanguageActivity : BaseActivity<ActivitySelectLanguageBinding>() {
         }
     }
 
+    /**
+    Restarts the activity to apply the language change.
+    @param languageCode The language code of the selected language.
+    @param languageName The display name of the selected language.
+     */
     private fun setLanguage(languageCode: String, languageName: String) {
         // Update language preferences
         preference.setLanguage(languageName)
@@ -107,6 +112,9 @@ class SelectLanguageActivity : BaseActivity<ActivitySelectLanguageBinding>() {
         restartActivity()
     }
 
+    /**
+    Restarts the activity to apply language-related changes.
+     */
     private fun restartActivity() {
         binding.selectLangTitle.text =
             resources.getString(R.string.select_language_hint)
