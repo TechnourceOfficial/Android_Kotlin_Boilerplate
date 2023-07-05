@@ -227,6 +227,12 @@ class EditProfileActivity : BaseActivity<ActivityEditProfileBinding>(), EditProf
 
     }
 
+    /**
+    Shows the bottom sheet dialog with the country list.
+    The bottom sheet contains a RecyclerView populated with country data.
+    The user can search for countries and select a country from the list.
+    When a country is selected, the country code is updated in the main activity and the bottom sheet is dismissed.
+     */
     private fun showBottomSheet() {
         // Inflate the layout for the bottom sheet
         val bottomSheetBinding = CountryCodeBotomsheetBinding.inflate(layoutInflater)
@@ -273,6 +279,13 @@ class EditProfileActivity : BaseActivity<ActivityEditProfileBinding>(), EditProf
         bottomSheetDialog.show()
     }
 
+    /**
+    Filters the country list based on the given query.
+    The query is used to search for matching country names, country codes, and phone codes.
+    The filtered list is updated in the country code adapter.
+    If the filtered list is empty, a toast message is displayed indicating no data found.
+    @param query The search query to filter the country list.
+     */
     private fun filterList(query: String?) {
 
         if (query != null) {
@@ -295,6 +308,13 @@ class EditProfileActivity : BaseActivity<ActivityEditProfileBinding>(), EditProf
         }
     }
 
+    /**
+    Adds JSON data to the country list by parsing the "country_list.json" file from the assets folder.
+    The JSON data is extracted to create Country objects containing the country name, country code, and phone code.
+    The Country objects are added to the countryList.
+    If an exception occurs during the process, it is printed to the console.
+     */
+
     private fun addJSONDataToList() {
         try {
             val obj = loadJSONFromAssets()?.let { JSONObject(it) }
@@ -314,6 +334,12 @@ class EditProfileActivity : BaseActivity<ActivityEditProfileBinding>(), EditProf
         }
     }
 
+    /**
+    Loads and reads the "country_list.json" file from the assets folder.
+    The contents of the file are converted into a String and returned.
+    If an exception occurs during the process, it is printed to the console and null is returned.
+    @return The loaded JSON data as a String, or null if an exception occurs.
+     */
     private fun loadJSONFromAssets(): String? {
         val json: String = try {
             val `is` = applicationContext.assets.open("country_list.json")
@@ -329,6 +355,11 @@ class EditProfileActivity : BaseActivity<ActivityEditProfileBinding>(), EditProf
         return json
     }
 
+    /**
+    Opens the edit profile bottom sheet.
+    The layout for the bottom sheet is inflated and displayed as a BottomSheetDialog.
+    Click listeners are set for the camera and gallery buttons, which perform specific actions and dismiss the bottom sheet.
+     */
     private fun openEditProfileBottomSheet() {
         // Inflate the layout for the edit profile bottom sheet
         val bottomSheetBinding = EditProfileBottomSheetBinding.inflate(layoutInflater)
@@ -350,6 +381,15 @@ class EditProfileActivity : BaseActivity<ActivityEditProfileBinding>(), EditProf
         bottomSheetDialog.show()
     }
 
+    /**
+    Opens the device's gallery using an image picker library.
+    It configures the image picker with the following options:
+    galleryOnly: Only allows selecting images from the gallery.
+    crop: Enables cropping of the selected image.
+    compress: Specifies the maximum size of the compressed image to be less than 1 MB.
+    maxResultSize: Sets the maximum resolution of the selected image to be less than 1080 x 1080.
+    It creates an intent with the configured options and launches it using the cameraRequest activity result launcher.
+     */
     private fun openGallery() {
         ImagePicker.with(this)
             .galleryOnly()
@@ -362,6 +402,15 @@ class EditProfileActivity : BaseActivity<ActivityEditProfileBinding>(), EditProf
             .createIntent { intent -> cameraRequest.launch(intent) }
     }
 
+    /**
+    Opens the device's camera using an image picker library.
+    It configures the image picker with the following options:
+    cameraOnly: Only allows capturing images using the camera.
+    crop: Enables cropping of the captured image.
+    compress: Specifies the maximum size of the compressed image to be less than 1 MB.
+    maxResultSize: Sets the maximum resolution of the captured image to be less than 1080 x 1080.
+    It creates an intent with the configured options and launches it using the cameraRequest activity result launcher.
+     */
     private fun openCamera() {
         ImagePicker.with(this)
             .cameraOnly()
