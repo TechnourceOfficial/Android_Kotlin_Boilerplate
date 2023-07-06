@@ -48,7 +48,7 @@ Install Android Studio : Android Studio Dolphin | 2021.3.1 Patch 1
 
 # Clone Project :
 
-git clone https://github.com/TechnourceDeveloper/android_kotlin_boilerplate
+git clone https://github.com/TechnourceOfficial/Android_Kotlin_Boilerplate
 After cloning the project, you can open it in Android Studio by following these steps:
 1.  Open Android Studio.
 2.  Select "Open an existing Android Studio project" from the welcome screen.
