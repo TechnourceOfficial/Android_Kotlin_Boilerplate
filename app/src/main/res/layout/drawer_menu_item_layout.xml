@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp_10"
             android:layout_weight="90"
-            android:text="@string/bottom_menu_1" />
+            android:text="@string/home" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/itemDesc"
