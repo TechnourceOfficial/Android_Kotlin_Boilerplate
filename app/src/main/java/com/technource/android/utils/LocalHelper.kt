@@ -8,11 +8,18 @@ import android.os.Build
 import android.preference.PreferenceManager
 import java.util.*
 
-
+/**
+Helper class to manage the application's locale and language settings.
+ */
 object LocaleHelper {
     private const val SELECTED_LANGUAGE = "Locale.Helper.Selected.Language"
 
-    // the method is used to set the language at runtime
+    /**
+    Sets the locale for the application.
+    @param context The context.
+    @param language The language code (e.g., "en", "fr").
+    @return The updated context with the new locale.
+     */
     fun setLocale(context: Context, language: String): Context {
         persist(context, language)
 
@@ -23,6 +30,11 @@ object LocaleHelper {
         // for devices having lower version of android os
     }
 
+    /**
+    Persists the selected language in the shared preferences.
+    @param context The context.
+    @param language The selected language.
+     */
     private fun persist(context: Context, language: String) {
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
         val editor = preferences.edit()
@@ -30,8 +42,12 @@ object LocaleHelper {
         editor.apply()
     }
 
-    // the method is used update the language of application by creating
-    // object of inbuilt Locale class and passing language argument to it
+    /**
+    Updates the resources configuration with the specified language for devices running on Android Nougat (API level 24) or higher.
+    @param context The context.
+    @param language The language code (e.g., "en", "fr").
+    @return The updated context with the new resources configuration.
+     */
     @TargetApi(Build.VERSION_CODES.N)
     private fun updateResources(context: Context, language: String): Context {
         val locale = Locale(language)
@@ -42,6 +58,12 @@ object LocaleHelper {
         return context.createConfigurationContext(configuration)
     }
 
+    /**
+    Updates the resources configuration with the specified language for devices running on Android versions lower than Nougat (API level 24).
+    @param context The context.
+    @param language The language code (e.g., "en", "fr").
+    @return The updated context with the new resources configuration.
+     */
     private fun updateResourcesLegacy(context: Context, language: String): Context {
         val locale = Locale(language)
         Locale.setDefault(locale)

@@ -98,6 +98,16 @@ fun Toast.successToast(message: String, activity: Activity) {
     }
 }
 
+/**
+Checks if a password is valid based on the following criteria:
+Contains at least one uppercase letter
+Contains at least one lowercase letter
+Contains at least one digit
+Contains at least one special character from the set [!@#$&*~]
+Has a minimum length of 8 characters
+@param password The password to be validated.
+@return true if the password is valid, false otherwise.
+*/
 fun isValidPassword(password: String): Boolean {
     val pattern: Pattern
     val PASSWORD_PATTERN = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\\\$&*~]).{8,}\$"
@@ -106,11 +116,21 @@ fun isValidPassword(password: String): Boolean {
     return matcher.matches()
 }
 
+/**
+Checks if an email address is valid.
+@param email The email address to be validated.
+@return true if the email address is valid, false otherwise.
+ */
 fun isValidEmail(email: String): Boolean {
     val pattern = Patterns.EMAIL_ADDRESS
     return pattern.matcher(email).matches()
 }
 
+/**
+Validates an email address and returns the validation status.
+@param email The email address to be validated.
+@return The ValidationStatus enum indicating the validation status of the email.
+ */
 fun validateEmail(email: String?): ValidationStatus {
     return when {
         email.isNullOrEmpty() -> ValidationStatus.EMPTY_EMAIL
@@ -119,6 +139,11 @@ fun validateEmail(email: String?): ValidationStatus {
     }
 }
 
+/**
+Validates a password and returns the validation status.
+@param password The password to be validated.
+@return The ValidationStatus enum indicating the validation status of the password.
+ */
 fun validatePassword(password: String?): ValidationStatus {
     return when {
         password.isNullOrEmpty() -> ValidationStatus.EMPTY_PASSWORD
@@ -127,6 +152,11 @@ fun validatePassword(password: String?): ValidationStatus {
     }
 }
 
+/**
+Validates a first name and returns the validation status.
+@param v The first name to be validated.
+@return The ValidationStatus enum indicating the validation status of the first name.
+ */
 fun validFirstName(v: String?): ValidationStatus {
     return when {
         v.isNullOrEmpty() -> ValidationStatus.EMPTY_FIRSTNAME
@@ -134,6 +164,11 @@ fun validFirstName(v: String?): ValidationStatus {
     }
 }
 
+/**
+Validates a last name and returns the validation status.
+@param v The last name to be validated.
+@return The ValidationStatus enum indicating the validation status of the last name.
+ */
 fun validLastName(v: String?): ValidationStatus {
     return when {
         v.isNullOrEmpty() -> ValidationStatus.EMPTY_LASTNAME
@@ -141,6 +176,11 @@ fun validLastName(v: String?): ValidationStatus {
     }
 }
 
+/**
+Validates a username and returns the validation status.
+@param v The username to be validated.
+@return The ValidationStatus enum indicating the validation status of the username.
+ */
 fun validUsername(v: String?): ValidationStatus {
     return when {
         v.isNullOrEmpty() -> ValidationStatus.EMPTY_USERNAME
@@ -148,6 +188,11 @@ fun validUsername(v: String?): ValidationStatus {
     }
 }
 
+/**
+Validates a home address and returns the validation status.
+@param v The home address to be validated.
+@return The ValidationStatus enum indicating the validation status of the home address.
+ */
 fun validHomeAddress(v: String?): ValidationStatus {
     return when {
         v.isNullOrEmpty() -> ValidationStatus.EMPTY_USERNAME
@@ -155,6 +200,11 @@ fun validHomeAddress(v: String?): ValidationStatus {
     }
 }
 
+/**
+Validates an office address and returns the validation status.
+@param v The office address to be validated.
+@return The ValidationStatus enum indicating the validation status of the office address.
+ */
 fun validOfficeAddress(v: String?): ValidationStatus {
     return when {
         v.isNullOrEmpty() -> ValidationStatus.EMPTY_USERNAME
@@ -162,6 +212,11 @@ fun validOfficeAddress(v: String?): ValidationStatus {
     }
 }
 
+/**
+Validates a mobile number and returns the validation status.
+@param v The mobile number to be validated.
+@return The ValidationStatus enum indicating the validation status of the mobile number.
+ */
 fun validMobile(v: String?): ValidationStatus {
     return when {
         v.isNullOrEmpty() -> ValidationStatus.EMPTY_MOBILENO
@@ -169,6 +224,12 @@ fun validMobile(v: String?): ValidationStatus {
     }
 }
 
+/**
+Validates the confirm password and returns the validation status.
+@param password The password entered by the user.
+@param confirmPassword The confirm password entered by the user.
+@return The ValidationStatus enum indicating the validation status of the confirm password.
+ */
 fun validConfirmPassword(password: String?, confirmPassword: String?): ValidationStatus {
     // validate confirm password
     if (TextUtils.isEmpty(confirmPassword)) {
@@ -180,12 +241,21 @@ fun validConfirmPassword(password: String?, confirmPassword: String?): Validatio
     return ValidationStatus.VALID
 }
 
+/**
+Retrieves the error message for a specific ValidationStatus.
+@param context The context used to retrieve the string resources.
+@return The error message corresponding to the ValidationStatus.
+ */
 fun ValidationStatus.getErrorMessage(context: Context): String? {
     val errorMessageResId = ValidationConstants.validationStatusErrorMap[this]
     return errorMessageResId?.let { context.getString(it) }
 }
 
-// Function to hide the keyboard
+/**
+Hides the keyboard.
+@param context The context used to retrieve the input method manager.
+@param view The view from which to retrieve the window token.
+ */
 fun hideKeyboard(context: Context, view: View) {
     val inputMethodManager =
         context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
