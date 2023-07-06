@@ -44,25 +44,20 @@ class SettingsFragment(private val mActivity: AppCompatActivity) :
         drawerAdapter.setOnItemClick(object : RecyclerviewInterface {
             override fun onItemClick(position: Int) {
                 when (position) {
-                    0 -> {}
-                    1 -> {}
-                    2 -> {}
-                    3 -> {}
-                    4 -> {
+                    0 -> {
                         // Start the ChangeLanguageActivity when "Change Language" is selected
                         isChangeLanguageSelected = true
                         startActivity(Intent(mActivity, ChangeLanguageActivity::class.java))
                         mActivity.overridePendingTransition(R.anim.slide_in_up, R.anim.nothing_ani)
                     }
-                    5 -> {
+                    1 -> {
                         // Open the GitHub repository in a browser when "Git Repo" is selected
                         val uri: Uri =
                             Uri.parse(Constants.GIT_REPO_LINK) // missing 'http://' will cause crashed
-
                         val intent = Intent(Intent.ACTION_VIEW, uri)
                         startActivity(intent)
                     }
-                    6 -> {
+                    2 -> {
                         // Start the MoreActivity when "More" is selected
                         startActivity(Intent(mActivity, AboutActivity::class.java))
                         mActivity.overridePendingTransition(R.anim.slide_in_up, R.anim.nothing_ani)
@@ -126,34 +121,6 @@ class SettingsFragment(private val mActivity: AppCompatActivity) :
      */
     private fun addDataInMenu() {
         drawerItemList.clear()
-        drawerItemList.add(
-            DrawerMenu(
-                resources.getString(R.string.bottom_menu_1),
-                "",
-                R.drawable.ic_bullet
-            )
-        )
-        drawerItemList.add(
-            DrawerMenu(
-                resources.getString(R.string.bottom_menu_2),
-                "",
-                R.drawable.ic_bullet
-            )
-        )
-        drawerItemList.add(
-            DrawerMenu(
-                resources.getString(R.string.bottom_menu_3),
-                "",
-                R.drawable.ic_bullet
-            )
-        )
-        drawerItemList.add(
-            DrawerMenu(
-                resources.getString(R.string.bottom_menu_4),
-                "",
-                R.drawable.ic_bullet
-            )
-        )
         drawerItemList.add(
             DrawerMenu(
                 resources.getString(R.string.change_language),

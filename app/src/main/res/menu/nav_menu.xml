@@ -4,18 +4,18 @@
     <item
         android:id="@+id/home"
         android:icon="@drawable/home_item_selection"
-        android:title="@string/bottom_menu_1" />
+        android:title="@string/home" />
 
     <item
         android:id="@+id/order"
         android:icon="@drawable/order_itme_selection"
-        android:title="@string/bottom_menu_2" />
+        android:title="@string/order" />
     <item
         android:id="@+id/notification"
         android:icon="@drawable/notification_item_selection"
-        android:title="@string/bottom_menu_3" />
+        android:title="@string/notification" />
     <item
         android:id="@+id/setting"
         android:icon="@drawable/setting_item_selection"
-        android:title="@string/bottom_menu_4" />
+        android:title="@string/settings" />
 </menu>
