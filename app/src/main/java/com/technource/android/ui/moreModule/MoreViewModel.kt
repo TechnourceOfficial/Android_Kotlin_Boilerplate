@@ -30,9 +30,9 @@ class MoreViewModel : ViewModel() {
      */
     private fun fetchData() {
         val moreList = listOf(
-            MoreModel("About us", Constants.aboutUs),
-            MoreModel("Terms & Condition", Constants.termsNCondition),
-            MoreModel("Privacy Policy", Constants.privacyPolicy)
+            MoreModel("About us", Constants.ABOUT_US_LINK),
+            MoreModel("Terms & Condition", Constants.TERMS_CONDITION_LINK),
+            MoreModel("Privacy Policy", Constants.PRIVACY_POLICY_LINK)
         )
         more.value = moreList
     }

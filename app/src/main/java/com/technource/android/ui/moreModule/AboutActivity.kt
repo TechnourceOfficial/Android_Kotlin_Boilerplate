@@ -8,6 +8,7 @@ import com.example.android_kotlin_boilerplate.databinding.ActivityAboutBinding
 import com.technource.android.base.BaseActivity
 import com.technource.android.commonInterface.RecyclerviewInterface
 import com.technource.android.ui.viewTermsModule.TermsViewActivity
+import com.technource.android.utils.Constants
 
 class AboutActivity : BaseActivity<ActivityAboutBinding>() {
     override fun getViewBinding() = ActivityAboutBinding.inflate(layoutInflater)
@@ -40,7 +41,7 @@ class AboutActivity : BaseActivity<ActivityAboutBinding>() {
         moreListAdapter.setOnItemClick(object : RecyclerviewInterface {
             override fun onItemClick(position: Int) {
                 val intent = Intent(this@AboutActivity, TermsViewActivity::class.java)
-                intent.putExtra("url", moreModel[position].url)
+                intent.putExtra(Constants.INTENT_KEY_URL, moreModel[position].url)
                 startActivity(intent)
                 overridePendingTransition(R.anim.slide_in_up, R.anim.nothing_ani)
             }

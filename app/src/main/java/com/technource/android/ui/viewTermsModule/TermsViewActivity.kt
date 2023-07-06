@@ -8,12 +8,13 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import com.example.android_kotlin_boilerplate.databinding.ActivityTermsViewBinding
 import com.technource.android.base.BaseActivity
+import com.technource.android.utils.Constants
 
 class TermsViewActivity : BaseActivity<ActivityTermsViewBinding>() {
     override fun getViewBinding() = ActivityTermsViewBinding.inflate(layoutInflater)
 
     override fun initObj() {
-        val url: String? = intent.getStringExtra("url")
+        val url: String? = intent.getStringExtra(Constants.INTENT_KEY_URL)
         // Configure WebView settings
         val webViewSettings = binding.webView.settings
         webViewSettings.javaScriptEnabled = true
