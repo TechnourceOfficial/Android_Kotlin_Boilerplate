@@ -150,7 +150,7 @@ And these ones for production purposes:
 
 ## Application Preview
 
-https://github.com/TechnourceDeveloper/Android_Kotlin_Boilerplate/assets/70566076/6aa8cccb-3e82-4a65-a997-804eac596931
+https://github.com/TechnourceOfficial/Android_Kotlin_Boilerplate/assets/70566076/5d14c036-2291-4c57-a902-ac20892f3194
 
 ## License
 
