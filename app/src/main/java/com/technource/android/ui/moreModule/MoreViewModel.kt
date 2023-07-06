@@ -13,14 +13,22 @@ class MoreViewModel : ViewModel() {
         fetchData()
     }
 
+    /**
+    Returns the LiveData object containing the list of MoreModel objects.
+    The LiveData object is used to observe changes to the list in the UI.
+    @return The LiveData object representing the list of MoreModel objects.
+     */
     fun getList(): LiveData<List<MoreModel>> {
         return more
     }
 
+    /**
+    Fetches the data asynchronously and updates the users LiveData.
+    The data is fetched from a data source or generated locally.
+    In this example, a list of MoreModel objects is created and assigned to the more LiveData.
+    The observers of the LiveData will be notified of the updated data.
+     */
     private fun fetchData() {
-        // Perform an asynchronous operation to fetch the data
-        // Once the data is available, update the users LiveData
-        // For example:
         val moreList = listOf(
             MoreModel("About us", Constants.aboutUs),
             MoreModel("Terms & Condition", Constants.termsNCondition),
