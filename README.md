@@ -167,6 +167,9 @@ And these ones for production purposes:
   ![CMS Screen](https://github.com/TechnourceDeveloper/android_kotlin_boilerplate/blob/main/screenshots/Dashboard/CMS%20view%20Screen.jpg)
   ![Logout Screen](https://github.com/TechnourceDeveloper/android_kotlin_boilerplate/blob/main/screenshots/Authentication/Logout%20Screen.jpg)
 
+## Application Preview
+
+https://github.com/TechnourceDeveloper/Android_Kotlin_Boilerplate/assets/70566076/6aa8cccb-3e82-4a65-a997-804eac596931
 
 ## License
 
