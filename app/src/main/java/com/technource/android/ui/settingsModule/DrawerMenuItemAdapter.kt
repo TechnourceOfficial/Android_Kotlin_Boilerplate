@@ -16,10 +16,6 @@ class DrawerMenuItemAdapter(private var drawerMenu: List<DrawerMenu>) :
     private var rowIndex = 0
     private var oldSelectedPosition = 0
 
-    fun setOnItemClick(onItemClick: RecyclerviewInterface) {
-        setOnItemClick = onItemClick
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DrawerMenuViewHolder {
         val view =
             DrawerMenuItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -72,6 +68,14 @@ class DrawerMenuItemAdapter(private var drawerMenu: List<DrawerMenu>) :
 
     override fun getItemCount(): Int {
         return drawerMenu.size
+    }
+
+    /**
+    Sets the click listener for the RecyclerView item.
+    @param onItemClick The click listener to be set.
+     */
+    fun setOnItemClick(onItemClick: RecyclerviewInterface) {
+        setOnItemClick = onItemClick
     }
 
     class DrawerMenuViewHolder(val binding: DrawerMenuItemLayoutBinding) :

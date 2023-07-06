@@ -5,22 +5,22 @@ interface PreferenceHelper {
     /**
     Sets the selected language.
     @param language The language to be set.
-    */
+     */
     fun setLanguage(language: String)
     /**
     Retrieves the selected language.
     @return The selected language.
-    */
+     */
     fun getLanguage(): String
     /**
     Sets the language code for localization purposes.
     @param languageCode The language code to be set.
-    */
+     */
     fun setLanguageCode(languageCode: String)
     /**
     Retrieves the language code for localization.
     @return The language code.
-    */
+     */
     fun getLanguageCode(): String
     /**
     Sets the flag indicating whether the intro screen has been completed.
@@ -42,5 +42,8 @@ interface PreferenceHelper {
     @return True if the user is logged in, false otherwise.
      */
     fun isLoggedIn(): Boolean
+    /**
+    Clears all the stored preferences.
+     */
     fun clear()
 }

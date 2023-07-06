@@ -57,7 +57,7 @@ class SettingsFragment(private val mActivity: AppCompatActivity) :
                     5 -> {
                         // Open the GitHub repository in a browser when "Git Repo" is selected
                         val uri: Uri =
-                            Uri.parse(Constants.gitRepo) // missing 'http://' will cause crashed
+                            Uri.parse(Constants.GIT_REPO_LINK) // missing 'http://' will cause crashed
 
                         val intent = Intent(Intent.ACTION_VIEW, uri)
                         startActivity(intent)
@@ -84,6 +84,17 @@ class SettingsFragment(private val mActivity: AppCompatActivity) :
         binding.logoutBtn.setOnClickListener { openLogoutDialog() }
     }
 
+
+    /**
+    Opens the logout dialog.
+    The dialog is created using a custom Dialog class and inflated with the logout_dialog.xml layout.
+    The layout parameters are set to match the parent view.
+    The dialog is set to be non-cancelable to prevent dismissing it by clicking outside.
+    Click listeners are set for the "Logout" button, "Cancel" button, and "Close" button.
+    When the "Logout" button is clicked, the user preferences are cleared, and the user is redirected to the LoginActivity.
+    The finishAffinity() method is called to finish all activities in the current task.
+    When the "Cancel" or "Close" button is clicked, the dialog is dismissed.
+     */
     private fun openLogoutDialog() {
         // Create and show the logout dialog
         val logoutDialog = Dialog(mActivity)
@@ -104,6 +115,15 @@ class SettingsFragment(private val mActivity: AppCompatActivity) :
         logoutDialog.show()
     }
 
+
+    /**
+    Adds data to the menu list in the drawer.
+    The existing drawerItemList is cleared.
+    DrawerMenu objects representing the menu items are created and added to the drawerItemList.
+    Each menu item consists of a title, subtitle, and icon.
+    The titles and icons are retrieved from resources using string resource IDs and drawable resource IDs.
+    The subtitle for the "Change Language" menu item is dynamically set based on the language code stored in preferences.
+     */
     private fun addDataInMenu() {
         drawerItemList.clear()
         drawerItemList.add(
@@ -151,6 +171,13 @@ class SettingsFragment(private val mActivity: AppCompatActivity) :
         drawerItemList.add(DrawerMenu(resources.getString(R.string.more), "", R.drawable.ic_more))
     }
 
+    /**
+    Refreshes the drawer menu.
+    Resets the isChangeLanguageSelected flag to false.
+    Adds data to the menu items in the drawer.
+    Notifies the drawerAdapter that the data set has changed.
+    Updates the text of the logout, deactivate, and delete account TextViews with the corresponding string resources.
+     */
     private fun refreshDrawer() {
         isChangeLanguageSelected = false
         addDataInMenu()
