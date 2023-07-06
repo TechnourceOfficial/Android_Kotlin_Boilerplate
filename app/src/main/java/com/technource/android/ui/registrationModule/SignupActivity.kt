@@ -137,7 +137,7 @@ class SignupActivity : BaseActivity<ActivitySignupBinding>(), SignupNavigator {
         binding.backBtn.back.setOnClickListener { finish() }
         binding.loginTV.setOnClickListener {
             startActivity(Intent(this@SignupActivity, LoginActivity::class.java))
-            finish()
+            finishAffinity()
             overridePendingTransition(R.anim.slide_in_up, R.anim.nothing_ani)
         }
 
@@ -150,14 +150,14 @@ class SignupActivity : BaseActivity<ActivitySignupBinding>(), SignupNavigator {
 
         binding.termsCondition.setOnClickListener {
             val intent = Intent(this@SignupActivity, TermsViewActivity::class.java)
-            intent.putExtra("url", "https://www.technource.com/terms-conditions/")
+            intent.putExtra(Constants.INTENT_KEY_URL, Constants.TERMS_CONDITION_LINK)
             startActivity(intent)
             overridePendingTransition(R.anim.slide_in_up, R.anim.nothing_ani)
         }
 
         binding.privacyPolicy.setOnClickListener {
             val intent = Intent(this@SignupActivity, TermsViewActivity::class.java)
-            intent.putExtra("url", "https://technource.com/privacy-policy/")
+            intent.putExtra(Constants.INTENT_KEY_URL, Constants.PRIVACY_POLICY_LINK)
             startActivity(intent)
             overridePendingTransition(R.anim.slide_in_up, R.anim.nothing_ani)
         }

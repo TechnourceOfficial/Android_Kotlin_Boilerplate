@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Android Kotlin Boilerplate</string>
+    <string name="app_name">Technource</string>
     <string name="select_language_hint">Select Language</string>
     <string name="english">English</string>
     <string name="french">French</string>
