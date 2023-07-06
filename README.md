@@ -134,25 +134,12 @@ And these ones for production purposes:
 - Reset Password Screen
 - Edit Profile Screen
   - Upload Photo from Camera & Gallery
-    **Screenshots**
-    ![Splash Screen](https://github.com/TechnourceDeveloper/android_kotlin_boilerplate/blob/main/screenshots/Authentication/Splash%20Screen.jpg)
-    ![Introduction Screen](https://github.com/TechnourceDeveloper/android_kotlin_boilerplate/blob/main/screenshots/Authentication/Intro%20Screen.jpg)
-    ![Welcome Screen](https://github.com/TechnourceDeveloper/android_kotlin_boilerplate/blob/main/screenshots/Authentication/Welcome%20Screen.jpg)
-    ![Registration Screen](https://github.com/TechnourceDeveloper/android_kotlin_boilerplate/blob/main/screenshots/Authentication/Registration%20Screen.jpg)
-    ![Login Screen](https://github.com/TechnourceDeveloper/android_kotlin_boilerplate/blob/main/screenshots/Authentication/Login%20Screen.jpg)
-    ![Forgot Password Screen](https://github.com/TechnourceDeveloper/android_kotlin_boilerplate/blob/main/screenshots/Authentication/Forgot%20Password%20Screen.jpg)
-    ![OTP Screen](https://github.com/TechnourceDeveloper/android_kotlin_boilerplate/blob/main/screenshots/Authentication/OTP%20Screen.jpg)
-    ![Reset Password Screen](https://github.com/TechnourceDeveloper/android_kotlin_boilerplate/blob/main/screenshots/Authentication/Reset%20Password%20Screen.jpg)
-    ![Search Country Screen](https://github.com/TechnourceDeveloper/android_kotlin_boilerplate/blob/main/screenshots/Authentication/Search%20Country%20Screen.jpg)
-    ![Edit Profile Screen](https://github.com/TechnourceDeveloper/android_kotlin_boilerplate/blob/main/screenshots/Authentication/Edit%20Profile%20Screen.jpg)
-
+   
 ## Application Language
 - English
 - French
 - Russian
-  **Screenshots**
-  ![Select Language Screen](https://github.com/TechnourceDeveloper/android_kotlin_boilerplate/blob/main/screenshots/Dashboard/Select%20Language%20Screen.jpg)
-  ![Change Language Screen](https://github.com/TechnourceDeveloper/android_kotlin_boilerplate/blob/main/screenshots/Dashboard/Change%20Language%20Screen.jpg)
+
 ## Dashboard
 -   Dashboard UI with Bottom TabNavigation
 -  AboutUs Screen
@@ -160,12 +147,6 @@ And these ones for production purposes:
 - Privacy-Policy Screen
 - Change Language Screen
 - Logout Screen
-  **Screenshots**
-  ![Dashboard Screen](https://github.com/TechnourceDeveloper/android_kotlin_boilerplate/blob/main/screenshots/Dashboard/Dashboard%20Screen.jpg)
-  ![Setings Screen](https://github.com/TechnourceDeveloper/android_kotlin_boilerplate/blob/main/screenshots/Dashboard/Settings%20Screen.jpg)
-  ![About Us Screen](https://github.com/TechnourceDeveloper/android_kotlin_boilerplate/blob/main/screenshots/Dashboard/About%20us%20Screen.jpg)
-  ![CMS Screen](https://github.com/TechnourceDeveloper/android_kotlin_boilerplate/blob/main/screenshots/Dashboard/CMS%20view%20Screen.jpg)
-  ![Logout Screen](https://github.com/TechnourceDeveloper/android_kotlin_boilerplate/blob/main/screenshots/Authentication/Logout%20Screen.jpg)
 
 ## Application Preview
 
