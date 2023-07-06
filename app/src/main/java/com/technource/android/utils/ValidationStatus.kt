@@ -1,5 +1,8 @@
 package com.technource.android.utils
 
+/**
+Enum class representing the validation status for various fields.
+ */
 enum class ValidationStatus {
     VALID,
     EMPTY_EMAIL,

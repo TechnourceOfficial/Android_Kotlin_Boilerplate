@@ -2,7 +2,9 @@ package com.technource.android.utils
 
 import com.example.android_kotlin_boilerplate.R
 
-
+/**
+Object containing constants related to validation.
+ */
 object ValidationConstants {
     // The validationStatusErrorMap is a map that maps each validation status to its corresponding error message resource ID.
     val validationStatusErrorMap = mapOf(
