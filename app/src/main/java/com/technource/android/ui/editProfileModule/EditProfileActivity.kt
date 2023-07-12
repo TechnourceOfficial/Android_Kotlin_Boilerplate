@@ -4,6 +4,7 @@ import android.Manifest
 import android.app.Activity
 import android.content.pm.PackageManager
 import android.content.res.Resources
+import android.net.Uri
 import android.os.Build
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
@@ -21,6 +22,8 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.technource.android.base.BaseActivity
 import com.technource.android.commonInterface.RecyclerviewInterface
+import com.technource.android.databse.AppDatabase
+import com.technource.android.preference.PreferencesHelperImpl
 import com.technource.android.ui.countryCodeMdule.Country
 import com.technource.android.ui.countryCodeMdule.CountryAdapter
 import com.technource.android.utils.*
@@ -32,14 +35,32 @@ class EditProfileActivity : BaseActivity<ActivityEditProfileBinding>(), EditProf
     private lateinit var countryCodeAdapter: CountryAdapter
     private val countryList = ArrayList<Country>()
     private val WRITE_STORAGE_PERMISSION_CODE = 1
+    private lateinit var appDatabase: AppDatabase
+    private lateinit var preference: PreferencesHelperImpl
+    private var userId: Long = 0
+    private var userPhotoURI = ""
 
     override fun initObj() {
+        appDatabase = AppDatabase.getInstance(this)!!
+
+        // Initialize PreferencesHelperImpl instance
+        preference = PreferencesHelperImpl(this)
+
         // Initialize the ViewModel and set up the data binding
         viewModel = ViewModelProvider(this)[EditProfileViewModel::class.java]
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
         viewModel.setNavigator(this)
-
+        appDatabase.registrationDao()?.let { viewModel.initialize(it) }
+        // Fetch the user profile from the ViewModel
+        viewModel.fetchUserProfile(preference.getLoggedInEmail())
+        // Observe the user profile data and update the UI accordingly
+        viewModel.userProfile.observe(this) { userProfile ->
+            userProfile?.let {
+                userId = userProfile.id
+                if (userProfile.userPhoto != "") binding.userPhoto.setImageURI(Uri.parse(userProfile.userPhoto))
+            }
+        }
         countryCodeAdapter = CountryAdapter(countryList)
 
         // Set up the app bar title
@@ -178,6 +199,21 @@ class EditProfileActivity : BaseActivity<ActivityEditProfileBinding>(), EditProf
             mobileNoStatus == ValidationStatus.VALID && homeAddressStatus == ValidationStatus.VALID &&
             officeAddressStatus == ValidationStatus.VALID
         ) {
+            // Set updated email in preference
+            preference.setLoggedInEmail(email)
+            // Update the user profile in the database
+            appDatabase.registrationDao()?.updateUser(
+                userId,
+                firstname,
+                lastname,
+                email,
+                username,
+                binding.countryCodeTv.text.toString(),
+                mobileNo,
+                homeAddress,
+                officeAddress,
+                userPhotoURI
+            )
             Toast(this).successToast(resources.getString(R.string.profile_update), this)
             finish()
         }
@@ -272,7 +308,6 @@ class EditProfileActivity : BaseActivity<ActivityEditProfileBinding>(), EditProf
         countryCodeAdapter.setOnItemClick(object : RecyclerviewInterface {
             override fun onItemClick(position: Int) {
                 binding.countryCodeTv.text = "+" + countryList[position].phoneCode
-                binding.countryCodeTv.setTextColor(resources.getColor(R.color.hintColor))
                 bottomSheetDialog.dismiss()
             }
         })
@@ -446,6 +481,7 @@ class EditProfileActivity : BaseActivity<ActivityEditProfileBinding>(), EditProf
         when (resultCode) {
             Activity.RESULT_OK -> {
                 val fileUri = data?.data!!
+                userPhotoURI = fileUri.toString()
                 binding.userPhoto.setImageURI(fileUri)
             }
             ImagePicker.RESULT_ERROR -> {

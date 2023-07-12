@@ -94,4 +94,6 @@
     <string name="profile_update">Profile Updated</string>
     <string name="camera">Camera</string>
     <string name="gallery">Gallery</string>
+    <string name="invalid_login_details">Invalid login details</string>
+    <string name="email_exists_message">Email ID already exists please try another.</string>
 </resources>

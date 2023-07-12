@@ -1,27 +1,31 @@
 package com.technource.android.ui.loginModule
 
 import android.content.Intent
+import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
 import com.example.android_kotlin_boilerplate.R
 import com.example.android_kotlin_boilerplate.databinding.ActivityLoginBinding
 import com.technource.android.base.BaseActivity
+import com.technource.android.databse.AppDatabase
 import com.technource.android.preference.PreferencesHelperImpl
 import com.technource.android.ui.dashboardModule.DashboardActivity
 import com.technource.android.ui.forgotPasswordModule.ForgotPasswordActivity
 import com.technource.android.ui.registrationModule.SignupActivity
-import com.technource.android.utils.ValidationStatus
-import com.technource.android.utils.getErrorMessage
-import com.technource.android.utils.validateEmail
-import com.technource.android.utils.validatePassword
+import com.technource.android.utils.*
 
 class LoginActivity : BaseActivity<ActivityLoginBinding>(), LoginNavigator {
     override fun getViewBinding() = ActivityLoginBinding.inflate(layoutInflater)
     private lateinit var viewModel: LoginViewModel
     private lateinit var preference: PreferencesHelperImpl
+    lateinit var appDatabase: AppDatabase
+
     override fun initObj() {
         // Initialize PreferencesHelperImpl instance
         preference = PreferencesHelperImpl(this)
+
+        //Initialize Database
+        appDatabase = AppDatabase.getInstance(this)!!
 
         // Initialize LoginViewModel instance
         viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
@@ -72,11 +76,21 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(), LoginNavigator {
         val passwordStatus = validatePassword(password)
 
         if (emailStatus == ValidationStatus.VALID && passwordStatus == ValidationStatus.VALID) {
-            // Set isLoggedIn to true in preferences
-            preference.setIsLoggedIn(true)
-            startActivity(Intent(this@LoginActivity, DashboardActivity::class.java))
-            finishAffinity()
-            overridePendingTransition(R.anim.slide_in_up, R.anim.nothing_ani)
+            // The isValidLoginUser variable will hold the result of the login operation.
+            // If a matching user is found, it will contain the corresponding RegistrationTable object representing the user.
+            // If the login is unsuccessful or no matching user is found, it will be null.
+            val isValidLoginUser = appDatabase.registrationDao()?.login(email, password)
+            if (isValidLoginUser != null) {
+                preference.setLoggedInEmail(email)
+                // Set isLoggedIn to true in preferences
+                preference.setIsLoggedIn(true)
+                startActivity(Intent(this@LoginActivity, DashboardActivity::class.java))
+                finishAffinity()
+                overridePendingTransition(R.anim.slide_in_up, R.anim.nothing_ani)
+            } else {
+                Toast(this).errorToast(resources.getString(R.string.invalid_login_details), this)
+            }
+
         }
         if (emailStatus != ValidationStatus.VALID) {
             // Display email validation error message

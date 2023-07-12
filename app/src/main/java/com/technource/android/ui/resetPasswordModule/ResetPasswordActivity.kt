@@ -6,8 +6,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.android_kotlin_boilerplate.R
 import com.example.android_kotlin_boilerplate.databinding.ActivityResetPasswordBinding
 import com.technource.android.base.BaseActivity
+import com.technource.android.databse.AppDatabase
+import com.technource.android.preference.PreferencesHelperImpl
 import com.technource.android.ui.loginModule.LoginActivity
-import com.technource.android.ui.otpModule.OtpActivity
 import com.technource.android.utils.ValidationStatus
 import com.technource.android.utils.getErrorMessage
 import com.technource.android.utils.validConfirmPassword
@@ -16,8 +17,15 @@ import com.technource.android.utils.validatePassword
 class ResetPasswordActivity : BaseActivity<ActivityResetPasswordBinding>(), ResetPasswordNavigator {
     override fun getViewBinding() = ActivityResetPasswordBinding.inflate(layoutInflater)
     private lateinit var viewModel: ResetPasswordViewModel
+    private lateinit var appDatabase: AppDatabase
+    private lateinit var preference: PreferencesHelperImpl
 
     override fun initObj() {
+        appDatabase = AppDatabase.getInstance(this)!!
+
+        // Initialize PreferencesHelperImpl instance
+        preference = PreferencesHelperImpl(this)
+
         binding.headerLayout.headerTitle.text = resources.getString(R.string.set_new_password)
         // Initialize ResetPasswordViewModel instance
         viewModel = ViewModelProvider(this)[ResetPasswordViewModel::class.java]
@@ -77,6 +85,8 @@ class ResetPasswordActivity : BaseActivity<ActivityResetPasswordBinding>(), Rese
         if (newPasswordStatus == ValidationStatus.VALID &&
             confirmPasswordStatus == ValidationStatus.VALID
         ) {
+            // Reset the password for the logged-in user in the registration table
+            appDatabase.registrationDao()?.resetPassword(newPassword, preference.getLoggedInEmail())
             startActivity(Intent(this@ResetPasswordActivity, LoginActivity::class.java))
             finish()
             overridePendingTransition(R.anim.slide_in_up, R.anim.nothing_ani)

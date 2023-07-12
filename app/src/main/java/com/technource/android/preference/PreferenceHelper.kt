@@ -46,4 +46,24 @@ interface PreferenceHelper {
     Clears all the stored preferences.
      */
     fun clear()
+    /**
+    Sets the email of the currently logged in user.
+    @param email The email of the user.
+     */
+    fun setLoggedInEmail(email: String)
+    /**
+    Retrieves the email of the currently logged in user.
+    @return The email of the user.
+     */
+    fun getLoggedInEmail(): String
+    /**
+    Sets the userId of the currently logged in user.
+    @param userId The userId of the user.
+     */
+    fun setLoggedInUserId(userId: Long)
+    /**
+    Retrieves the userId of the currently logged in user.
+    @return The userId of the user.
+     */
+    fun getLoggedInUserId(): Long
 }

@@ -20,6 +20,6 @@ object ValidationConstants {
         ValidationStatus.MISMATCHED_PASSWORDS to R.string.password_not_match,
         ValidationStatus.EMPTY_HOME_ADDRESS to R.string.empty_home_address,
         ValidationStatus.EMPTY_OFFICE_ADDRESS to R.string.empty_home_address,
-
+        ValidationStatus.DUPLICATE_EMAIL to R.string.email_exists_message
         )
 }

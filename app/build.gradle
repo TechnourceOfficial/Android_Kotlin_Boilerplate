@@ -60,4 +60,14 @@ dependencies {
 
     //image picker
     implementation 'com.github.dhaval2404:imagepicker:2.1'
+
+    //Room Database
+    implementation('androidx.room:room-runtime:2.5.2') {
+        exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk8'
+    }
+    kapt "androidx.room:room-compiler:2.5.2"
+    implementation 'androidx.room:room-ktx:2.5.2'
+
+    // ViewModel dependencies from Android Lifecycle library
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
 }

@@ -48,4 +48,20 @@ class PreferencesHelperImpl constructor(context: Context) : PreferenceHelper {
         mPrefs.edit().remove(Constants.LANGUAGE).apply()
         mPrefs.edit().remove(Constants.LANGUAGE_CODE).apply()
     }
+
+    override fun setLoggedInEmail(email: String) {
+        mPrefs.edit().putString(Constants.LOGGED_IN_USER_EMAIL, email).apply()
+    }
+
+    override fun getLoggedInEmail(): String {
+        return mPrefs.getString(Constants.LOGGED_IN_USER_EMAIL, "").toString()
+    }
+
+    override fun setLoggedInUserId(userId: Long) {
+        mPrefs.edit().putLong(Constants.LOGGED_IN_USER_ID, userId).apply()
+    }
+
+    override fun getLoggedInUserId(): Long {
+        return mPrefs.getLong(Constants.LOGGED_IN_USER_ID, 0)
+    }
 }

@@ -14,6 +14,8 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.technource.android.base.BaseActivity
 import com.technource.android.commonInterface.RecyclerviewInterface
+import com.technource.android.databse.AppDatabase
+import com.technource.android.databse.RegistrationTable
 import com.technource.android.ui.countryCodeMdule.Country
 import com.technource.android.ui.countryCodeMdule.CountryAdapter
 import com.technource.android.ui.loginModule.LoginActivity
@@ -26,10 +28,14 @@ class SignupActivity : BaseActivity<ActivitySignupBinding>(), SignupNavigator {
     private lateinit var viewModel: SignupViewModel
     private lateinit var countryCodeAdapter: CountryAdapter
     private val countryList = ArrayList<Country>()
+    lateinit var appDatabase: AppDatabase
 
     override fun initObj() {
         // Initialize SignupViewModel instance
         viewModel = ViewModelProvider(this)[SignupViewModel::class.java]
+
+        //Initialize Database
+        appDatabase = AppDatabase.getInstance(this)!!
 
         // Set viewModel and lifecycle owner for data binding
         binding.viewModel = viewModel
@@ -188,9 +194,31 @@ class SignupActivity : BaseActivity<ActivitySignupBinding>(), SignupNavigator {
             mobileNoStatus == ValidationStatus.VALID && newPasswordStatus == ValidationStatus.VALID &&
             confirmPasswordStatus == ValidationStatus.VALID && binding.checkbox.isChecked
         ) {
-            startActivity(Intent(this@SignupActivity, LoginActivity::class.java))
-            finish()
-            overridePendingTransition(R.anim.slide_in_up, R.anim.nothing_ani)
+            // Check if the email already exists in the database
+            if (appDatabase.registrationDao()?.isEmailExists(email)!!) {
+                // Email already exists, show error message
+                val duplicateEmailStatus = ValidationStatus.DUPLICATE_EMAIL
+                val errorMessage = duplicateEmailStatus.getErrorMessage(this)
+                binding.emailTextInput.error = errorMessage
+                binding.emailTextInput.isErrorEnabled = errorMessage != null
+            } else {
+                // Email is unique, proceed with registration
+                // Insert new user data into the registration table
+                appDatabase.registrationDao()?.insertData(
+                    RegistrationTable(
+                        firstname,
+                        lastname,
+                        email,
+                        username,
+                        binding.countryCodeBtn.text.toString(),
+                        mobileNo,
+                        newPassword
+                    )
+                )
+                startActivity(Intent(this@SignupActivity, LoginActivity::class.java))
+                finish()
+                overridePendingTransition(R.anim.slide_in_up, R.anim.nothing_ani)
+            }
         }
 
         // Display error messages for invalid fields

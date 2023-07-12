@@ -85,6 +85,7 @@
                         android:layout_height="@dimen/dp_60"
                         android:background="@drawable/gray_edit_text_view_bg"
                         android:hint="@string/profile_name_hint"
+                        android:text="@{viewModel.userProfile.firstName}"
                         android:inputType="text"
                         android:padding="@dimen/dp_10" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -110,6 +111,7 @@
                         android:layout_height="@dimen/dp_60"
                         android:background="@drawable/gray_edit_text_view_bg"
                         android:hint="@string/profile_lastname_hint"
+                        android:text="@{viewModel.userProfile.lastName}"
                         android:inputType="text"
                         android:padding="@dimen/dp_10" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -135,6 +137,7 @@
                         android:background="@drawable/gray_edit_text_view_bg"
                         android:drawableEnd="@drawable/ic_edit"
                         android:hint="@string/profile_email_hint"
+                        android:text="@{viewModel.userProfile.emailId}"
                         android:inputType="textEmailAddress"
                         android:padding="@dimen/dp_10" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -159,6 +162,7 @@
                         android:layout_height="@dimen/dp_60"
                         android:background="@drawable/gray_edit_text_view_bg"
                         android:hint="@string/profile_username_hint"
+                        android:text="@{viewModel.userProfile.username}"
                         android:inputType="text"
                         android:padding="@dimen/dp_10" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -190,8 +194,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:text="@string/profile_countrycode_hint"
-                            android:textColor="@color/kcCaptionLightGray" />
+                            android:text="@{viewModel.userProfile.countryCode}"
+                            android:textColor="@color/hintColor" />
                     </androidx.cardview.widget.CardView>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -212,6 +216,7 @@
                             android:layout_marginStart="@dimen/dp_10"
                             android:background="@drawable/gray_edit_text_view_bg"
                             android:hint="@string/profile_phone_hint"
+                            android:text="@{viewModel.userProfile.phoneNumber}"
                             android:inputType="number"
                             android:maxLength="15"
                             android:padding="@dimen/dp_10" />
@@ -240,6 +245,7 @@
                         android:drawableEnd="@drawable/ic_location"
                         android:drawableTint="@color/iconTint"
                         android:hint="@string/home_address"
+                        android:text="@{viewModel.userProfile.homeAddress}"
                         android:inputType="text"
                         android:padding="@dimen/dp_10" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -266,6 +272,7 @@
                         android:drawableEnd="@drawable/ic_location"
                         android:drawableTint="@color/iconTint"
                         android:hint="@string/office_address"
+                        android:text="@{viewModel.userProfile.officeAddress}"
                         android:inputType="text"
                         android:padding="@dimen/dp_10" />
                 </com.google.android.material.textfield.TextInputLayout>

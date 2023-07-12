@@ -95,4 +95,6 @@
     <string name="profile_update">Profil mis à jour</string>
     <string name="camera">Camera</string>
     <string name="gallery">Gallery</string>
+    <string name="invalid_login_details">Informations de connexion invalide</string>
+    <string name="email_exists_message">L\'adresse e-mail existe déjà, veuillez en essayer une autre.</string>
 </resources>

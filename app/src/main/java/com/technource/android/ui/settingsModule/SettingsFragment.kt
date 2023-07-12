@@ -101,6 +101,7 @@ class SettingsFragment(private val mActivity: AppCompatActivity) :
 
         // Handle click on the "Logout" button
         logoutDialogBinding.logoutBtn.setOnClickListener {
+            logoutDialog.dismiss()
             preference.clear()
             startActivity(Intent(mActivity, LoginActivity::class.java))
             mActivity.finishAffinity()
