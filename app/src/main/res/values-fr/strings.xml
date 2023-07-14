@@ -95,6 +95,11 @@
     <string name="profile_update">Profil mis à jour</string>
     <string name="camera">Camera</string>
     <string name="gallery">Gallery</string>
-    <string name="invalid_login_details">Informations de connexion invalide</string>
+    <string name="invalid_login_details">Mot de passe incorrect! Entrer un mot de passe valide s\'il vous plait</string>
     <string name="email_exists_message">L\'adresse e-mail existe déjà, veuillez en essayer une autre.</string>
+    <string name="registration_success_message">Vous êtes inscrit avec succès.</string>
+    <string name="email_not_register">L\'identifiant de messagerie n\'est pas enregistré ! Veuillez d\'abord créer un compte, puis vous connecter.</string>
+    <string name="delete_message">Voulez-vous vraiment supprimer ce compte ?</string>
+    <string name="delete">Supprimer</string>
+    <string name="delete_success">Votre compte est supprimé avec succès !</string>
 </resources>

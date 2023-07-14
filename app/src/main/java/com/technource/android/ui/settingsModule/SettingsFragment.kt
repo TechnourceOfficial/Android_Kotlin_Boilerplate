@@ -5,8 +5,10 @@ import android.content.Intent
 import android.net.Uri
 import android.view.ViewGroup
 import android.view.Window
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.SimpleItemAnimator
 import com.example.android_kotlin_boilerplate.R
@@ -14,12 +16,16 @@ import com.example.android_kotlin_boilerplate.databinding.FragmentSettingsBindin
 import com.example.android_kotlin_boilerplate.databinding.LogoutDialogBinding
 import com.technource.android.base.BaseFragment
 import com.technource.android.commonInterface.RecyclerviewInterface
+import com.technource.android.databse.AppDatabase
+import com.technource.android.databse.RegistrationDao
 import com.technource.android.preference.PreferencesHelperImpl
 import com.technource.android.ui.moreModule.AboutActivity
 import com.technource.android.ui.changeLanguageModule.ChangeLanguageActivity
 import com.technource.android.ui.editProfileModule.EditProfileActivity
 import com.technource.android.ui.loginModule.LoginActivity
 import com.technource.android.utils.Constants
+import com.technource.android.utils.successToast
+import kotlinx.coroutines.launch
 
 class SettingsFragment(private val mActivity: AppCompatActivity) :
     BaseFragment<FragmentSettingsBinding>() {
@@ -28,10 +34,25 @@ class SettingsFragment(private val mActivity: AppCompatActivity) :
     private lateinit var drawerAdapter: DrawerMenuItemAdapter
     private val drawerItemList = ArrayList<DrawerMenu>()
     var isChangeLanguageSelected = false
+    lateinit var appDatabase: AppDatabase
 
     override fun initObj() {
         preference = PreferencesHelperImpl(mActivity)
+        appDatabase = AppDatabase.getInstance(mActivity)!!
 
+
+        lifecycleScope.launch {
+            val user = appDatabase.registrationDao()?.getUserByEmail(preference.getLoggedInEmail())
+            user?.let {
+                binding.navigationHeader.userName.text = "${user.firstName} ${user.lastName}"
+                binding.navigationHeader.userEmail.text = user.emailId
+                if (user.userPhoto != "") binding.navigationHeader.userImg.setImageURI(
+                    Uri.parse(
+                        user.userPhoto
+                    )
+                )
+            }
+        }
         // Open the drawer from the end of the screen
         binding.drawerLayout.openDrawer(GravityCompat.END)
 
@@ -72,11 +93,27 @@ class SettingsFragment(private val mActivity: AppCompatActivity) :
 
     override fun click() {
         binding.navigationHeader.editProfile.setOnClickListener {
+            isChangeLanguageSelected = true
             startActivity(Intent(mActivity, EditProfileActivity::class.java))
             mActivity.overridePendingTransition(R.anim.slide_in_up, R.anim.nothing_ani)
         }
 
-        binding.logoutBtn.setOnClickListener { openLogoutDialog() }
+        binding.logoutBtn.setOnClickListener {
+            openLogoutDialog(
+                resources.getString(R.string.logout),
+                resources.getString(R.string.logout_message),
+                resources.getString(R.string.logout),
+                true
+            )
+        }
+        binding.deleteTV.setOnClickListener {
+            openLogoutDialog(
+                resources.getString(R.string.delete_account),
+                resources.getString(R.string.delete_message),
+                resources.getString(R.string.delete),
+                false
+            )
+        }
     }
 
 
@@ -90,7 +127,12 @@ class SettingsFragment(private val mActivity: AppCompatActivity) :
     The finishAffinity() method is called to finish all activities in the current task.
     When the "Cancel" or "Close" button is clicked, the dialog is dismissed.
      */
-    private fun openLogoutDialog() {
+    private fun openLogoutDialog(
+        dialogTitle: String,
+        dialogMsg: String,
+        positiveBtnText: String,
+        isLogoutDialog: Boolean
+    ) {
         // Create and show the logout dialog
         val logoutDialog = Dialog(mActivity)
         val window: Window? = logoutDialog.window
@@ -98,15 +140,26 @@ class SettingsFragment(private val mActivity: AppCompatActivity) :
         logoutDialog.setCancelable(false)
         val logoutDialogBinding = LogoutDialogBinding.inflate(layoutInflater)
         logoutDialog.setContentView(logoutDialogBinding.root)
-
+        logoutDialogBinding.dialogTitle.text = dialogTitle
+        logoutDialogBinding.dialogMsg.text = dialogMsg
+        logoutDialogBinding.positiveBtn.text = positiveBtnText
         // Handle click on the "Logout" button
-        logoutDialogBinding.logoutBtn.setOnClickListener {
-            logoutDialog.dismiss()
-            preference.clear()
-            startActivity(Intent(mActivity, LoginActivity::class.java))
-            mActivity.finishAffinity()
+        logoutDialogBinding.positiveBtn.setOnClickListener {
+            if (isLogoutDialog) {
+                logoutDialog.dismiss()
+                preference.clear()
+                startActivity(Intent(mActivity, LoginActivity::class.java))
+                mActivity.finishAffinity()
+            } else {
+                appDatabase.registrationDao()?.deleteUser(preference.getLoggedInEmail())
+                Toast(mActivity).successToast(resources.getString(R.string.delete_success),mActivity)
+                logoutDialog.dismiss()
+                preference.clear()
+                startActivity(Intent(mActivity, LoginActivity::class.java))
+                mActivity.finishAffinity()
+            }
         }
-        logoutDialogBinding.cancelBtn.setOnClickListener { logoutDialog.dismiss() }
+        logoutDialogBinding.negativeBtn.setOnClickListener { logoutDialog.dismiss() }
         logoutDialogBinding.closeDialogBtn.setOnClickListener { logoutDialog.dismiss() }
         logoutDialog.show()
     }
@@ -156,6 +209,18 @@ class SettingsFragment(private val mActivity: AppCompatActivity) :
             resources.getString(R.string.deactivate_account)
         binding.deleteTV.text =
             resources.getString(R.string.delete_account)
+        lifecycleScope.launch {
+            val user = appDatabase.registrationDao()?.getUserByEmail(preference.getLoggedInEmail())
+            user?.let {
+                binding.navigationHeader.userName.text = "${user.firstName} ${user.lastName}"
+                binding.navigationHeader.userEmail.text = user.emailId
+                if (user.userPhoto != "") binding.navigationHeader.userImg.setImageURI(
+                    Uri.parse(
+                        user.userPhoto
+                    )
+                )
+            }
+        }
     }
 
     override fun onResume() {

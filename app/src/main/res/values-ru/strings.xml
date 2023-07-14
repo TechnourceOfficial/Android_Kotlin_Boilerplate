@@ -94,6 +94,11 @@
     <string name="profile_update">Профиль обновлен</string>
     <string name="camera">Camera</string>
     <string name="gallery">Gallery</string>
-    <string name="invalid_login_details">Неверные учетные данные</string>
+    <string name="invalid_login_details">Неверный пароль! Пожалуйста, введите правильный пароль</string>
     <string name="email_exists_message">Идентификатор электронной почты уже существует, попробуйте другой.</string>
+    <string name="registration_success_message">Вы успешно зарегистрированы.</string>
+    <string name="email_not_register">Идентификатор электронной почты не зарегистрирован! Сначала создайте учетную запись, а затем войдите.</string>
+    <string name="delete_message">Вы уверены, что хотите удалить этот аккаунт?</string>
+    <string name="delete">Удалить</string>
+    <string name="delete_success">Ваш аккаунт успешно удален!</string>
 </resources>

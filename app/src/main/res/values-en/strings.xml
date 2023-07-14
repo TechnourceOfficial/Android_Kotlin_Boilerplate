@@ -94,6 +94,11 @@
     <string name="profile_update">Profile Updated</string>
     <string name="camera">Camera</string>
     <string name="gallery">Gallery</string>
-    <string name="invalid_login_details">Invalid login details</string>
+    <string name="invalid_login_details">Invalid Password! Please enter a valid password</string>
     <string name="email_exists_message">Email ID already exists please try another.</string>
+    <string name="registration_success_message">You are successfully register.</string>
+    <string name="email_not_register">Email id is not registered! Please create an account first, and then login.</string>
+    <string name="delete_message">Are you sure you want to delete this account?</string>
+    <string name="delete">Delete</string>
+    <string name="delete_success">Your account is successfully delete!</string>
 </resources>

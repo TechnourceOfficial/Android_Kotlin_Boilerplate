@@ -6,7 +6,7 @@
     android:padding="@dimen/dp_25">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/LogoutTitle"
+        android:id="@+id/dialogTitle"
         style="@style/black18Medium"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -22,11 +22,11 @@
         android:layout_height="@dimen/dp_25"
         android:src="@drawable/close"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/LogoutTitle"
+        app:layout_constraintStart_toEndOf="@+id/dialogTitle"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/logoutMsg"
+        android:id="@+id/dialogMsg"
         style="@style/grey16Light"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -35,22 +35,22 @@
         android:text="@string/logout_message"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LogoutTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/dialogTitle" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/logoutBtn"
+        android:id="@+id/positiveBtn"
         style="@style/yellowBtnStyle"
         android:layout_width="@dimen/dp_0"
         android:layout_height="@dimen/dp_60"
         android:layout_marginTop="@dimen/dp_30"
         android:layout_marginEnd="@dimen/dp_10"
         android:text="@string/logout"
-        app:layout_constraintEnd_toStartOf="@+id/cancelBtn"
+        app:layout_constraintEnd_toStartOf="@+id/negativeBtn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoutMsg" />
+        app:layout_constraintTop_toBottomOf="@+id/dialogMsg" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/cancelBtn"
+        android:id="@+id/negativeBtn"
         style="@style/whiteBtnStyle"
         android:layout_width="@dimen/dp_0"
         android:layout_height="@dimen/dp_60"
@@ -58,6 +58,6 @@
         android:layout_marginTop="@dimen/dp_30"
         android:text="@string/cancel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/logoutBtn"
-        app:layout_constraintTop_toBottomOf="@+id/logoutMsg" />
+        app:layout_constraintStart_toEndOf="@+id/positiveBtn"
+        app:layout_constraintTop_toBottomOf="@+id/dialogMsg" />
 </androidx.constraintlayout.widget.ConstraintLayout>

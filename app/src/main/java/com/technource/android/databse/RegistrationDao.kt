@@ -15,6 +15,7 @@ interface RegistrationDao {
      */
     @Insert
     fun insertData(registrationTable: RegistrationTable)
+
     /**
     Checks if an email exists in the RegistrationTable.
     @param emailId The email to check.
@@ -22,6 +23,7 @@ interface RegistrationDao {
      */
     @Query("SELECT EXISTS(SELECT * FROM RegistrationTable WHERE emailId = :emailId)")
     fun isEmailExists(emailId: String?): Boolean
+
     /**
     Performs login by checking the email and password in the RegistrationTable.
     @param emailId The email for login.
@@ -30,6 +32,7 @@ interface RegistrationDao {
      */
     @Query("SELECT * FROM RegistrationTable WHERE emailId = :emailId AND password = :password")
     fun login(emailId: String, password: String): RegistrationTable?
+
     /**
     Retrieves a user from the RegistrationTable based on the email.
     @param email The email of the user to retrieve.
@@ -37,6 +40,7 @@ interface RegistrationDao {
      */
     @Query("SELECT * FROM RegistrationTable WHERE emailId = :email")
     fun getUserByEmail(email: String): RegistrationTable?
+
     /**
     Updates a user in the RegistrationTable.
     @param userId The ID of the user to update.
@@ -63,6 +67,7 @@ interface RegistrationDao {
         officeAddress: String,
         userPhotoURI: String
     )
+
     /**
     Resets the password of a user in the RegistrationTable.
     @param password The new password.
@@ -70,4 +75,25 @@ interface RegistrationDao {
      */
     @Query("UPDATE RegistrationTable SET password = :password WHERE emailId = :emailId")
     fun resetPassword(password: String, emailId: String)
+    /**
+    Retrieves the password associated with the given emailId.
+    @param emailId The emailId of the user.
+    @return The password associated with the emailId.
+     */
+    @Query("SELECT password FROM RegistrationTable WHERE emailId = :emailId")
+    fun getPassword(emailId: String?): String
+    /**
+      Deletes the user entry with the given emailId from the table.
+      @param emailId The emailId of the user to be deleted.
+     */
+    @Query("DELETE FROM RegistrationTable WHERE emailId = :emailId")
+    fun deleteUser(emailId: String)
+    /**
+    Updates the selected language name and code for the user with the given emailId.
+    @param selectedLanguageName The selected language name.
+    @param selectedLanguageCode The selected language code.
+    @param emailId The emailId of the user.
+     */
+    @Query("UPDATE RegistrationTable SET selectedLanguageName = :selectedLanguageName, selectedLanguageCode = :selectedLanguageCode WHERE emailId = :emailId")
+    fun updateLanguage(selectedLanguageName: String, selectedLanguageCode: String, emailId: String)
 }

@@ -1,9 +1,12 @@
 package com.technource.android.ui.loginModule
 
 import android.content.Intent
+import android.os.Build
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.example.android_kotlin_boilerplate.R
 import com.example.android_kotlin_boilerplate.databinding.ActivityLoginBinding
 import com.technource.android.base.BaseActivity
@@ -13,6 +16,9 @@ import com.technource.android.ui.dashboardModule.DashboardActivity
 import com.technource.android.ui.forgotPasswordModule.ForgotPasswordActivity
 import com.technource.android.ui.registrationModule.SignupActivity
 import com.technource.android.utils.*
+import kotlinx.coroutines.launch
+import java.security.Key
+import java.util.*
 
 class LoginActivity : BaseActivity<ActivityLoginBinding>(), LoginNavigator {
     override fun getViewBinding() = ActivityLoginBinding.inflate(layoutInflater)
@@ -67,6 +73,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(), LoginNavigator {
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun login() {
         val email: String = binding.emailET.text.toString()
         val password: String = binding.passwordET.text.toString()
@@ -79,18 +86,32 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(), LoginNavigator {
             // The isValidLoginUser variable will hold the result of the login operation.
             // If a matching user is found, it will contain the corresponding RegistrationTable object representing the user.
             // If the login is unsuccessful or no matching user is found, it will be null.
-            val isValidLoginUser = appDatabase.registrationDao()?.login(email, password)
-            if (isValidLoginUser != null) {
-                preference.setLoggedInEmail(email)
-                // Set isLoggedIn to true in preferences
-                preference.setIsLoggedIn(true)
-                startActivity(Intent(this@LoginActivity, DashboardActivity::class.java))
-                finishAffinity()
-                overridePendingTransition(R.anim.slide_in_up, R.anim.nothing_ani)
-            } else {
-                Toast(this).errorToast(resources.getString(R.string.invalid_login_details), this)
-            }
+            if (appDatabase.registrationDao()?.isEmailExists(email)!!) {
+                val encryptedPassword = appDatabase.registrationDao()?.getPassword(email)
+                val decryptPassword =
+                    decryptPassword(encryptedPassword!!, Constants.PASSWORD_SECRET_KEY)
+//                val isValidLoginUser = appDatabase.registrationDao()?.login(email, decryptPassword)
 
+                if (password == decryptPassword) {
+                    preference.setLoggedInEmail(email)
+                    // Set isLoggedIn to true in preferences
+                    preference.setIsLoggedIn(true)
+                    setLanguage()
+                    startActivity(Intent(this@LoginActivity, DashboardActivity::class.java))
+                    finishAffinity()
+                    overridePendingTransition(R.anim.slide_in_up, R.anim.nothing_ani)
+                } else {
+                    Toast(this).errorToast(
+                        resources.getString(R.string.invalid_login_details),
+                        this
+                    )
+                }
+            } else {
+                Toast(this).errorToast(
+                    resources.getString(R.string.email_not_register),
+                    this
+                )
+            }
         }
         if (emailStatus != ValidationStatus.VALID) {
             // Display email validation error message
@@ -122,4 +143,20 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(), LoginNavigator {
     }
 
     override fun handleError(throwable: Throwable?) {}
+    private fun setLanguage() {
+        lifecycleScope.launch {
+            val user = appDatabase.registrationDao()?.getUserByEmail(preference.getLoggedInEmail())
+            user?.let {
+                preference.setLanguageCode(user.selectedLanguageCode)
+                preference.setLanguage(user.selectedLanguageName)
+            }
+        }
+        // Update language preferences
+        preference.setLanguage(preference.getLanguage())
+        preference.setLanguageCode(preference.getLanguageCode())
+
+        // Change the language and restart the activity
+        changeLanguage(this, Locale(preference.getLanguageCode()))
+
+    }
 }

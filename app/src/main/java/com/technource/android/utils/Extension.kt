@@ -3,6 +3,7 @@ package com.technource.android.utils
 import android.app.Activity
 import android.content.Context
 import android.content.res.Configuration
+import android.os.Build
 import android.text.TextUtils
 import android.util.Patterns
 import android.view.Gravity
@@ -10,13 +11,17 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.ContentFrameLayout
 import com.example.android_kotlin_boilerplate.R
 import dev.b3nedikt.app_locale.AppLocale
 import dev.b3nedikt.reword.Reword
+import java.nio.charset.StandardCharsets
 import java.util.*
 import java.util.regex.Matcher
 import java.util.regex.Pattern
+import javax.crypto.Cipher
+import javax.crypto.spec.SecretKeySpec
 
 //Language Extension
 /**
@@ -260,4 +265,20 @@ fun hideKeyboard(context: Context, view: View) {
     val inputMethodManager =
         context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+}
+
+@RequiresApi(Build.VERSION_CODES.O)
+fun encryptPassword(plainText: String, secretKey: String): String {
+    val cipher = Cipher.getInstance("AES/ECB/PKCS5Padding")
+    cipher.init(Cipher.ENCRYPT_MODE, SecretKeySpec(secretKey.toByteArray(StandardCharsets.UTF_8), "AES"))
+    val encryptedBytes = cipher.doFinal(plainText.toByteArray(StandardCharsets.UTF_8))
+    return Base64.getEncoder().encodeToString(encryptedBytes)
+}
+
+@RequiresApi(Build.VERSION_CODES.O)
+fun decryptPassword(encryptedText: String, secretKey: String): String {
+    val cipher = Cipher.getInstance("AES/ECB/PKCS5Padding")
+    cipher.init(Cipher.DECRYPT_MODE, SecretKeySpec(secretKey.toByteArray(StandardCharsets.UTF_8), "AES"))
+    val decryptedBytes = cipher.doFinal(Base64.getDecoder().decode(encryptedText))
+    return String(decryptedBytes, StandardCharsets.UTF_8)
 }

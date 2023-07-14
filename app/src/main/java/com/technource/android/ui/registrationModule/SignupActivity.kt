@@ -2,7 +2,9 @@ package com.technource.android.ui.registrationModule
 
 import android.content.Intent
 import android.content.res.Resources
+import android.os.Build
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.SearchView
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
@@ -16,12 +18,14 @@ import com.technource.android.base.BaseActivity
 import com.technource.android.commonInterface.RecyclerviewInterface
 import com.technource.android.databse.AppDatabase
 import com.technource.android.databse.RegistrationTable
+import com.technource.android.preference.PreferencesHelperImpl
 import com.technource.android.ui.countryCodeMdule.Country
 import com.technource.android.ui.countryCodeMdule.CountryAdapter
 import com.technource.android.ui.loginModule.LoginActivity
 import com.technource.android.ui.viewTermsModule.TermsViewActivity
 import com.technource.android.utils.*
 import org.json.JSONObject
+import java.security.Key
 
 class SignupActivity : BaseActivity<ActivitySignupBinding>(), SignupNavigator {
     override fun getViewBinding() = ActivitySignupBinding.inflate(layoutInflater)
@@ -29,8 +33,11 @@ class SignupActivity : BaseActivity<ActivitySignupBinding>(), SignupNavigator {
     private lateinit var countryCodeAdapter: CountryAdapter
     private val countryList = ArrayList<Country>()
     lateinit var appDatabase: AppDatabase
+    private lateinit var preference: PreferencesHelperImpl
 
     override fun initObj() {
+        // Initialize PreferencesHelperImpl instance
+        preference = PreferencesHelperImpl(this)
         // Initialize SignupViewModel instance
         viewModel = ViewModelProvider(this)[SignupViewModel::class.java]
 
@@ -169,6 +176,7 @@ class SignupActivity : BaseActivity<ActivitySignupBinding>(), SignupNavigator {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun signUp() {
         // Get the input values from the text fields
         val firstname: String = binding.firstNameET.text.toString()
@@ -194,6 +202,7 @@ class SignupActivity : BaseActivity<ActivitySignupBinding>(), SignupNavigator {
             mobileNoStatus == ValidationStatus.VALID && newPasswordStatus == ValidationStatus.VALID &&
             confirmPasswordStatus == ValidationStatus.VALID && binding.checkbox.isChecked
         ) {
+            val encryptPassword = encryptPassword(newPassword, Constants.PASSWORD_SECRET_KEY)
             // Check if the email already exists in the database
             if (appDatabase.registrationDao()?.isEmailExists(email)!!) {
                 // Email already exists, show error message
@@ -212,8 +221,15 @@ class SignupActivity : BaseActivity<ActivitySignupBinding>(), SignupNavigator {
                         username,
                         binding.countryCodeBtn.text.toString(),
                         mobileNo,
-                        newPassword
+                        encryptPassword,
+                        "", "", "",
+                        preference.getLanguage(),
+                        preference.getLanguageCode()
                     )
+                )
+                Toast(this).successToast(
+                    resources.getString(R.string.registration_success_message),
+                    this
                 )
                 startActivity(Intent(this@SignupActivity, LoginActivity::class.java))
                 finish()

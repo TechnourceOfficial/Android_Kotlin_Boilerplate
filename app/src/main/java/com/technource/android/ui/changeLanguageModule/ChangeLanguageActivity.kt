@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.android_kotlin_boilerplate.R
 import com.example.android_kotlin_boilerplate.databinding.ActivityChangeLanguageBinding
 import com.technource.android.base.BaseActivity
+import com.technource.android.databse.AppDatabase
 import com.technource.android.preference.PreferencesHelperImpl
 import com.technource.android.ui.selectLanguageModule.LanguageViewModel
 import com.technource.android.utils.changeLanguage
@@ -16,7 +17,10 @@ class ChangeLanguageActivity : BaseActivity<ActivityChangeLanguageBinding>() {
     private lateinit var viewModel: LanguageViewModel
     private lateinit var selectLanguage: Locale
     private lateinit var adapter: ArrayAdapter<String>
+    lateinit var appDatabase: AppDatabase
     override fun initObj() {
+        //Initialize Database
+        appDatabase = AppDatabase.getInstance(this)!!
         binding.appbar.back.setOnClickListener {
             finish()
         }
@@ -87,6 +91,8 @@ class ChangeLanguageActivity : BaseActivity<ActivityChangeLanguageBinding>() {
 
         // Change the language and restart the activity
         changeLanguage(this, selectLanguage)
+        appDatabase.registrationDao()
+            ?.updateLanguage(languageName, languageCode, preference.getLoggedInEmail())
         restartActivity()
     }
 

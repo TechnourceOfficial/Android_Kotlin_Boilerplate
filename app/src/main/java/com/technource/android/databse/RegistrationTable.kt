@@ -28,8 +28,10 @@ data class RegistrationTable(
     var password: String = "",
     var homeAddress: String = "",
     var officeAddress: String = "",
-    var userPhoto: String = ""
-){
+    var userPhoto: String = "",
+    var selectedLanguageName: String = "",
+    var selectedLanguageCode: String = ""
+) {
     @PrimaryKey(autoGenerate = true)
     var id: Long = 0
 

@@ -15,5 +15,6 @@ class Constants {
         const val INTENT_KEY_URL = "url"
         const val LOGGED_IN_USER_EMAIL = "logged_in_user_email"
         const val LOGGED_IN_USER_ID = "logged_in_user_id"
+        const val PASSWORD_SECRET_KEY = "technource123456"
     }
 }
