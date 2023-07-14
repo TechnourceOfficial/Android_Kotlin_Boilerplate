@@ -53,7 +53,7 @@
     <string name="already_have_an_account">Vous avez déjà un compte?</string>
     <string name="log_in"><u>Connexion</u></string>
     <string name="select_country_code">Sélectionnez l\'indicatif du pays</string>
-    <string name="search">Search</string>
+    <string name="search">Recherche</string>
     <string name="welcome_back">Content de te revoir</string>
     <string name="glad_to_see_you">Heureux de vous revoir!</string>
     <string name="email_or_username">E-mail ou nom d\'utilisateur</string>
@@ -75,13 +75,13 @@
     <string name="set_new_password">Definir un nouveau mot de passe</string>
     <string name="set_new_password_message">Ici vous pouvez ajouter votre nouveau mot de passe</string>
     <string name="reset_password">réinitialiser le mot de passe</string>
-    <string name="home">Home</string>
-    <string name="order">Order</string>
+    <string name="home">Maison</string>
+    <string name="order">Commande</string>
     <string name="notification">Notification</string>
-    <string name="settings">Settings</string>
+    <string name="settings">Paramètres</string>
     <string name="search_here">Cherche ici</string>
-    <string name="git_repo">Github Repo</string>
-    <string name="more">More</string>
+    <string name="git_repo">Dépôt Github</string>
+    <string name="more">Plus</string>
     <string name="change_language">Changer de langue</string>
     <string name="deactivate_account">Désactiver le compte</string>
     <string name="delete_account">Supprimer le compte</string>
@@ -93,8 +93,8 @@
     <string name="office_address">Adresse de bureau</string>
     <string name="save">Sauvegarder</string>
     <string name="profile_update">Profil mis à jour</string>
-    <string name="camera">Camera</string>
-    <string name="gallery">Gallery</string>
+    <string name="camera">Caméra</string>
+    <string name="gallery">Galerie</string>
     <string name="invalid_login_details">Mot de passe incorrect! Entrer un mot de passe valide s\'il vous plait</string>
     <string name="email_exists_message">L\'adresse e-mail existe déjà, veuillez en essayer une autre.</string>
     <string name="registration_success_message">Vous êtes inscrit avec succès.</string>
@@ -102,4 +102,5 @@
     <string name="delete_message">Voulez-vous vraiment supprimer ce compte ?</string>
     <string name="delete">Supprimer</string>
     <string name="delete_success">Votre compte est supprimé avec succès !</string>
+    <string name="about_us">À propos de nous</string>
 </resources>

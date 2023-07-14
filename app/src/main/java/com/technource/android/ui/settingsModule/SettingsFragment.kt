@@ -3,6 +3,7 @@ package com.technource.android.ui.settingsModule
 import android.app.Dialog
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.Toast
@@ -33,7 +34,6 @@ class SettingsFragment(private val mActivity: AppCompatActivity) :
     private lateinit var preference: PreferencesHelperImpl
     private lateinit var drawerAdapter: DrawerMenuItemAdapter
     private val drawerItemList = ArrayList<DrawerMenu>()
-    var isChangeLanguageSelected = false
     lateinit var appDatabase: AppDatabase
 
     override fun initObj() {
@@ -67,7 +67,6 @@ class SettingsFragment(private val mActivity: AppCompatActivity) :
                 when (position) {
                     0 -> {
                         // Start the ChangeLanguageActivity when "Change Language" is selected
-                        isChangeLanguageSelected = true
                         startActivity(Intent(mActivity, ChangeLanguageActivity::class.java))
                         mActivity.overridePendingTransition(R.anim.slide_in_up, R.anim.nothing_ani)
                     }
@@ -93,7 +92,6 @@ class SettingsFragment(private val mActivity: AppCompatActivity) :
 
     override fun click() {
         binding.navigationHeader.editProfile.setOnClickListener {
-            isChangeLanguageSelected = true
             startActivity(Intent(mActivity, EditProfileActivity::class.java))
             mActivity.overridePendingTransition(R.anim.slide_in_up, R.anim.nothing_ani)
         }
@@ -152,7 +150,10 @@ class SettingsFragment(private val mActivity: AppCompatActivity) :
                 mActivity.finishAffinity()
             } else {
                 appDatabase.registrationDao()?.deleteUser(preference.getLoggedInEmail())
-                Toast(mActivity).successToast(resources.getString(R.string.delete_success),mActivity)
+                Toast(mActivity).successToast(
+                    resources.getString(R.string.delete_success),
+                    mActivity
+                )
                 logoutDialog.dismiss()
                 preference.clear()
                 startActivity(Intent(mActivity, LoginActivity::class.java))
@@ -200,7 +201,6 @@ class SettingsFragment(private val mActivity: AppCompatActivity) :
     Updates the text of the logout, deactivate, and delete account TextViews with the corresponding string resources.
      */
     private fun refreshDrawer() {
-        isChangeLanguageSelected = false
         addDataInMenu()
         drawerAdapter.notifyDataSetChanged()
         binding.logoutTv.text =
@@ -225,7 +225,7 @@ class SettingsFragment(private val mActivity: AppCompatActivity) :
 
     override fun onResume() {
         super.onResume()
-        if (isChangeLanguageSelected)
-            refreshDrawer()
+        Log.e("Resume", "Drawer")
+        refreshDrawer()
     }
 }

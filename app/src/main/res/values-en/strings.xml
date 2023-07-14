@@ -101,4 +101,5 @@
     <string name="delete_message">Are you sure you want to delete this account?</string>
     <string name="delete">Delete</string>
     <string name="delete_success">Your account is successfully delete!</string>
+    <string name="about_us">About us</string>
 </resources>

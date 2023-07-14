@@ -17,7 +17,8 @@ class AboutActivity : BaseActivity<ActivityAboutBinding>() {
     private lateinit var moreViewModel: MoreViewModel
     override fun initObj() {
         // Initialize MoreViewModel instance
-        moreViewModel = ViewModelProvider(this)[MoreViewModel::class.java]
+        val viewModelFactory = MoreViewModelFactory(resources)
+        moreViewModel = ViewModelProvider(this,viewModelFactory)[MoreViewModel::class.java]
 
         // Set viewModel and lifecycle owner for data binding
         binding.viewModel = moreViewModel

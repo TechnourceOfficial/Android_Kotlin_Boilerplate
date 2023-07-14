@@ -1,5 +1,6 @@
 package com.technource.android.ui.dashboardModule
 
+import android.util.Log
 import androidx.fragment.app.Fragment
 import com.example.android_kotlin_boilerplate.R
 import com.example.android_kotlin_boilerplate.databinding.ActivityDashboardBinding
@@ -61,5 +62,6 @@ class DashboardActivity : BaseActivity<ActivityDashboardBinding>() {
         transaction.replace(R.id.container, fragment)
         transaction.commit()
     }
+
 
 }

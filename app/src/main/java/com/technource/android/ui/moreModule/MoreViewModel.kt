@@ -1,13 +1,14 @@
 package com.technource.android.ui.moreModule
 
+import android.content.res.Resources
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.android_kotlin_boilerplate.R
 import com.technource.android.utils.Constants
 
-class MoreViewModel : ViewModel() {
+class MoreViewModel(private val resources: Resources) : ViewModel() {
     private val more: MutableLiveData<List<MoreModel>> = MutableLiveData()
-
     init {
         // Fetch data from a data source and update the moreList LiveData
         fetchData()
@@ -30,9 +31,9 @@ class MoreViewModel : ViewModel() {
      */
     private fun fetchData() {
         val moreList = listOf(
-            MoreModel("About us", Constants.ABOUT_US_LINK),
-            MoreModel("Terms & Condition", Constants.TERMS_CONDITION_LINK),
-            MoreModel("Privacy Policy", Constants.PRIVACY_POLICY_LINK)
+            MoreModel(resources.getString(R.string.about_us), Constants.ABOUT_US_LINK),
+            MoreModel(resources.getString(R.string.terms_and_conditions), Constants.TERMS_CONDITION_LINK),
+            MoreModel(resources.getString(R.string.privacy_policy), Constants.PRIVACY_POLICY_LINK)
         )
         more.value = moreList
     }

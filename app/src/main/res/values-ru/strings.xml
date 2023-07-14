@@ -52,7 +52,7 @@
     <string name="already_have_an_account">У вас уже есть аккаунт?</string>
     <string name="log_in"><u>Авторизоваться</u></string>
     <string name="select_country_code">Выберите код страны</string>
-    <string name="search">Search</string>
+    <string name="search">Поиск</string>
     <string name="welcome_back">Добро пожаловать</string>
     <string name="glad_to_see_you">Рад тебя видеть, Снова!</string>
     <string name="email_or_username">Электронная почта или имя пользователя</string>
@@ -74,13 +74,13 @@
     <string name="set_new_password">Установить новый пароль</string>
     <string name="set_new_password_message">Здесь вы можете добавить свой новый пароль</string>
     <string name="reset_password">Сброс пароля</string>
-    <string name="home">Home</string>
-    <string name="order">Order</string>
-    <string name="notification">Notification</string>
-    <string name="settings">Settings</string>
+    <string name="home">Дом</string>
+    <string name="order">Заказ</string>
+    <string name="notification">Уведомление</string>
+    <string name="settings">Настройки</string>
     <string name="search_here">Поищи здесь</string>
-    <string name="git_repo">Github Repo</string>
-    <string name="more">More</string>
+    <string name="git_repo">Репозиторий Github</string>
+    <string name="more">Более</string>
     <string name="change_language">Изменение языка</string>
     <string name="deactivate_account">Деактивировать аккаунт</string>
     <string name="delete_account">Удалить аккаунт</string>
@@ -92,8 +92,8 @@
     <string name="office_address">Адрес офиса</string>
     <string name="save">Сохранять</string>
     <string name="profile_update">Профиль обновлен</string>
-    <string name="camera">Camera</string>
-    <string name="gallery">Gallery</string>
+    <string name="camera">Камера</string>
+    <string name="gallery">Галерея</string>
     <string name="invalid_login_details">Неверный пароль! Пожалуйста, введите правильный пароль</string>
     <string name="email_exists_message">Идентификатор электронной почты уже существует, попробуйте другой.</string>
     <string name="registration_success_message">Вы успешно зарегистрированы.</string>
@@ -101,4 +101,5 @@
     <string name="delete_message">Вы уверены, что хотите удалить этот аккаунт?</string>
     <string name="delete">Удалить</string>
     <string name="delete_success">Ваш аккаунт успешно удален!</string>
+    <string name="about_us">О нас</string>
 </resources>
